@@ -71,41 +71,41 @@
 ## Motivation for Experiments
 
 
-<img src=img/original_plot.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/original_plot.png">
 
    - *The above plot shows the Gaussian distribution function with a random scale, which is between 0.01 and 0.15, original EQTransformer noise augmentation parameters. And, the size is 60001.*
 
 
-<img src=img/expo_plot_1.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/expo_plot_1.png">
 
    - *The above plot shows the exponential distribution function with 5 scale parameter and the size is 60001.*
    
    
-<img src=img/expo_plot_2.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/expo_plot_2.png">
 
    - *Again, the plot belongs to exponential distribution function, but the scale parameter is 8 and the size is 60001.*
    
    - *As can be seen, the shape of the plot is similar to each other. In contrast, if we look at the y-axis of the plot we will see that the magnitude of the axis is decreased, it becomes broader.*
    
    
-<img src=img/poisson_plot_1.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/poisson_plot_1.png">
 
    - *The above plot shows the Poisson distribution function with 5 scale parameter and the size is 60001.*
    
    
-<img src=img/poisson_plot_2.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/poisson_plot_2.png">
 
    - *Again, the plot belongs to Poisson distribution function, but the scale parameter is 8 and the size is 60001.*
    
    - *As can be seen, the magnitude of the y-axis again changes, becomes broader. And, the shape changes a little bit as lambda value changes.*
    
    
-<img src=img/ray_plot_1.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/ray_plot_1.png">
 
    - *The above plot shows the Rayleigh distribution function with 5 scale parameter and the size is 60001.*
    
    
-<img src=img/ray_plot_2.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/ray_plot_2.png">
 
    - *Again, the plot belongs to Rayleigh distribution function, but the scale parameter is 8 and the size is 60001.*
    
@@ -113,22 +113,22 @@
    
    
 
-<img src=img/sevde_plot_1.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/sevde_plot_1.png">
 
    - *The above plot shows the mixture of Gaussian and Poisson Distribution with 5 scale parameter and the size 60001.*
 
 
-<img src=img/sevde_plot1_2.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/sevde_plot1_2.png">
 
    - *Again, the plot belongs to mixture of Gaussian and Poisson distribution function, but the scale parameter is 8 and the size is 60001.*
    
    - *The scale of the y-axis is decreased, becomes broader, and mid of the plot is intense, like Gaussian Distribution.*
 
-<img src=img/sevde_plot2_1.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/sevde_plot2_1.png">
 
    - *The above plot shows the mixture of exponential and Poisson Distribution with 5 scale parameter and the size 60001.*
 
-<img src=img/sevde_plot2_2.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/sevde_plot2_2.png">
 
    - *Again, the plot belongs to mixture of exponential and Poisson distribution function, but the scale parameter is 8 and the size is 60001.*
    
@@ -158,65 +158,65 @@
 - **An earthquake data can be represented like an NumPy array since it is a signal. Also, the noise that are created by distribution functions can be also shown like a waveform signal because it is an array. And, here is the plots of the signals.**
 
 
-<img src=img/original_sig.png>  
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/original_sig.png">  
 
    - *This signal is created with the Gaussian distribution function array.*
 
 
-<img src=img/expo_sig_1.png>  
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/expo_sig_1.png">  
 
    - *This signal is created with the first exponential distribution function array.*
 
 
-<img src=img/expo_sig_2.png> 
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/expo_sig_2.png"> 
 
    - *This signal is created with the second exponential distribution function array.*
    
    - *The magnitude on the y-axis changed.*
    
 
-<img src=img/poisson_sig_1.png> 
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/poisson_sig_1.png"> 
 
    - *This signal is created with the first Poisson distribution function array.*
 
 
-<img src=img/poisson_sig_2.png> 
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/poisson_sig_2.png"> 
 
    - *This signal is created with the second Poisson distribution function array.*
    
    - *The magnitude on the y-axis is inreased.*
 
 
-<img src=img/ray_sig_1.png> 
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/ray_sig_1.png"> 
  
    - *This signal is created with the first Rayleigh distribution function array.*
    
 
-<img src=img/ray_sig_2.png> 
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/ray_sig_2.png"> 
 
    - *This signal is created with the second Rayleigh distribution function array.*
    
    - *Again, the magnitude on the y-axis changed.*
    
    
-<img src=img/sevde_signal11.png> 
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/sevde_signal11.png"> 
 
    - *This signal is created with the first mixture of Gaussian and Poisson distribution function array.*
    
 
-<img src=img/sevde_signal12.png> 
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/sevde_signal12.png"> 
 
    - *This signal is created with the second mixture of Gaussian and Poisson distribution function array.*
    
    - *The amplitude of the signal is increased.*
    
 
-<img src=img/sevde_signal21.png> 
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/sevde_signal21.png"> 
 
    - *This signal is created with the first mixture of exponential and Poisson distribution function array.*
 
 
-<img src=img/sevde_signal22.png> 
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/sevde_signal22.png"> 
 
    - *This signal is created with the second mixture of exponential and Poisson distribution function array.*
    
@@ -232,59 +232,59 @@
 ### The Original Waveform
 
 
-<img src=img/original_wave.png> 
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/original_wave.png"> 
 
 
   - *The above plot belongs to original waveform data, that already includes background noise. Also, this waveform is between the 10.55 and 11.05 interval, 26th of September 2019. (Network Name: KO, Station Name: SLVT)*
   
   
   
-<img src=img/scale_ex_1.png> 
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/scale_ex_1.png"> 
 
    - *The above plot shows mixture of the original waveform and first exponential distribution, since the magnitude of the original waveform is too much, noise could not show its effect.*
 
 
-<img src=img/scale_ex_2.png> 
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/scale_ex_2.png"> 
 
    - *The above plot shows mixture of the original waveform and second exponential distribution, since the magnitude of the original waveform is too much, noise could not show its effect, again.*
    
 
-<img src=img/scale_poi_1.png> 
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/scale_poi_1.png"> 
 
    - *The above plot shows mixture of the original waveform and first Poisson distribution, since the magnitude of the original waveform is too much, noise could not show its effect, again.*
    
 
-<img src=img/scale_poi_2.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/scale_poi_2.png">
 
    - *The above plot shows mixture of the original waveform and second Poisson distribution, since the magnitude of the original waveform is too much, noise could not show its effect, again.*
 
 
-<img src=img/scale_ray_1.png> 
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/scale_ray_1.png"> 
 
    - *The above plot shows mixture of the original waveform and first Rayleigh distribution, since the magnitude of the original waveform is too much, noise could not show its effect, again.*
    
 
-<img src=img/scale_ray_2.png> 
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/scale_ray_2.png"> 
 
    - *The above plot shows mixture of the original waveform and second Rayleigh distribution, since the magnitude of the original waveform is too much, noise could not show its effect, again.*
    
 
-<img src=img/scale_sevde1_1.png> 
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/scale_sevde1_1.png"> 
 
    - *The above plot shows mixture of the original waveform and first Gaussian & Poisson distribution, since the magnitude of the original waveform is too much, noise could not show its effect, again.*
    
 
-<img src=img/scale_sevde1_2.png> 
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/scale_sevde1_2.png"> 
 
    - *The above plot shows mixture of the original waveform and second Gaussian & Poisson distribution, since the magnitude of the original waveform is too much, noise could not show its effect, again.*
    
 
-<img src=img/scale_sevde2_1.png> 
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/scale_sevde2_1.png"> 
 
    - *The above plot shows mixture of the original waveform and first Poisson & exponential distribution, since the magnitude of the original waveform is too much, noise could not show its effect, again.*
    
    
-<img src=img/scale_sevde2_2.png> 
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/scale_sevde2_2.png"> 
 
    - *The above plot shows mixture of the original waveform and second Poisson & exponential distribution, since the magnitude of the original waveform is too much, noise could not show its effect, again.*
 
@@ -326,7 +326,7 @@
 ### The Original Waveform
 
 
-<img src=img/original_wave.png> 
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/original_wave.png"> 
 
 
   - *The above plot belongs to original waveform data, that already includes background noise. Also, this waveform is between the 10.55 and 11.05 interval, 26th of September 2019. (Network Name: KO, Station Name: SLVT)*
@@ -341,11 +341,11 @@
 
 ### Gaussian Noise Augmented, EQTransformer's Noise Augmentation
 
-<img src=img/original_augmented.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/original_augmented.png">
   
    - *The left and the right sides of the augmented waveform plot are amplified a little bit.*
    
-<img src=img/original_spec.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/original_spec.png">
 
    - *The spectrogram of the augmented waveform data (10.55 - 11.05 26th of September 2019)* 
    
@@ -376,11 +376,11 @@ def _add_noise(self, data, snr, rate):
 
 ### Multiplicative Exponential Noise Augmented
 
-<img src=img/expo_mul.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/expo_mul.png">
 
    - *As can be seen, the scale of the plot changed and during the mid of the plot, the shape also changed.*
    
-<img src=img/multi-expo.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/multi-expo.png">
 
    - *The spectrogram of the augmented waveform data (10.55 - 11.05 26th of September 2019)* 
    
@@ -413,11 +413,11 @@ def _add_noise(self, data, snr, rate):
    
 ### Multiplicative Poisson Noise Augmented
 
-<img src=img/poisson_mul.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/poisson_mul.png">
 
    - *As can be seen, the scale of the plot changed and during the mid of the plot, the shape also changed.*
    
-<img src=img/multi-poi.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/multi-poi.png">
 
    - *The spectrogram of the augmented waveform data (10.55 - 11.05 26th of September 2019)* 
    
@@ -450,11 +450,11 @@ def _add_noise(self, data, snr, rate):
    
 ### Multiplicative Rayleigh Noise Augmented
 
-<img src=img/ray_mul.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/ray_mul.png">
 
    - *Again, as can be seen, the scale of the plot changed and during the mid of the plot, the shape also changed.*
 
-<img src=img/multi-ray.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/multi-ray.png">
 
    - *The spectrogram of the augmented waveform data (10.55 - 11.05 26th of September 2019)* 
    
@@ -487,11 +487,11 @@ def _add_noise(self, data, snr, rate):
    
 ### Additive Exponential Noise Augmented (Type-1)
 
-<img src=img/expo_add_1.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/expo_add_1.png">
 
    - *The scale did not change, and the shape of the new augmented waveform is similar to the original one.*
 
-<img src=img/expo-typ1.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/expo-typ1.png">
 
    - *The spectrogram of the augmented waveform data (10.55 - 11.05 26th of September 2019)* 
    
@@ -526,11 +526,11 @@ def _add_noise(self, data, snr, rate):
 
 ### Additive Exponential Noise Augmented (Type-2)
 
-<img src=img/expo_add_2.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/expo_add_2.png">
 
    - *The scale and the shape is changed too much.*
 
-<img src=img/expo-typ2.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/expo-typ2.png">
 
    - *The spectrogram of the augmented waveform data (10.55 - 11.05 26th of September 2019)* 
    
@@ -563,11 +563,11 @@ def _add_noise(self, data, snr, rate):
 
 ### Additive Poisson Noise Augmented (Type-1)
 
-<img src=img/poisson_add_1.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/poisson_add_1.png">
 
    - *The scale did not change, and the shape of the new augmented waveform is similar to the original one.*
 
-<img src=img/poi-typ1.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/poi-typ1.png">
 
    - *The spectrogram of the augmented waveform data (10.55 - 11.05 26th of September 2019)* 
    
@@ -600,11 +600,11 @@ def _add_noise(self, data, snr, rate):
 
 ### Additive Poisson Noise Augmented (Type-2)
 
-<img src=img/poisson_add_2.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/poisson_add_2.png">
 
    - *The scale changed, but the shape is again similar to the original.*
 
-<img src=img/poi-typ2.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/poi-typ2.png">
 
    - *The spectrogram of the augmented waveform data (10.55 - 11.05 26th of September 2019)* 
    
@@ -638,11 +638,11 @@ def _add_noise(self, data, snr, rate):
 
 ### Additive Rayleigh Noise Augmented (Type-1)
 
-<img src=img/ray_add_1.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/ray_add_1.png">
 
    - *The scale did not change, and the shape of the new augmented waveform is similar to the original one.*
 
-<img src=img/ray-typ1.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/ray-typ1.png">
 
    - *The spectrogram of the augmented waveform data (10.55 - 11.05 26th of September 2019)* 
    
@@ -676,12 +676,12 @@ def _add_noise(self, data, snr, rate):
 
 ### Additive Rayleigh Noise Augmented (Type-2)
 
-<img src=img/ray_add_2.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/ray_add_2.png">
    
    - *The scale and the shape is changed too much.*
    
 
-<img src=img/ray-typ2.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/ray-typ2.png">
 
    - *The spectrogram of the augmented waveform data (10.55 - 11.05 26th of September 2019)* 
    
@@ -713,12 +713,12 @@ def _add_noise(self, data, snr, rate):
 ### Additive Gaussian & Poisson Noise Augmented
 
 
-<img src=img/sevde_augmented_1.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/sevde_augmented_1.png">
 
    - *The amplitude is increased with respect to original waveform.*
    
    
-<img src=img/sevde_spectrogram_1.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/sevde_spectrogram_1.png">
 
    - *The spectrogram of the augmented waveform data (10.55 - 11.05 26th of September 2019)* 
    
@@ -755,12 +755,12 @@ def _add_noise(self, data, snr, rate):
 ### Additive Exponential & Poisson Noise Augmented
 
 
-<img src=img/sevde_augmented_2.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/sevde_augmented_2.png">
 
    - *The amplitude is increased, and the silhouette is similar to the original waveform, but more noisy.*
    
    
-<img src=img/sevde_spectrogram_2.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/sevde_spectrogram_2.png">
 
    - *The spectrogram of the augmented waveform data (10.55 - 11.05 26th of September 2019)* 
    
@@ -797,7 +797,7 @@ def _add_noise(self, data, snr, rate):
 
 
 
-<img src=img/original_noise.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/original_noise.png">
 
    - *You can see the difference between the background and artificial noise, scale and shape are too different.*
    
@@ -816,20 +816,20 @@ def _add_noise(self, data, snr, rate):
  
 ### Mean Average Error Comparison
 
-<img src=img/pmaef.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/pmaef.png">
 
    - *As can be seen, we have less error compared to original model.*
    
 ### Root Mean Square Error Comparison
 
-<img src=img/prmsef.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/prmsef.png">
 
    - *As can be seen, we have less error compared to original model, again.*
    
    
 ### Detection Presicion Comparison
 
-<img src=img/det_pre.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/det_pre.png">
 
 
 
@@ -839,14 +839,14 @@ def _add_noise(self, data, snr, rate):
 
 ### Comparison for Matched Event Numbers
 
-<img src=img/match_final.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/match_final.png">
 
    - *The comparison with the catalog is done according to P wave arrival time.*
    
 
 ### Comparison for Detection Numbers
 
-<img src=img/detection_final.png>
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/detection_final.png">
 
    - *More events is detected rather than the original model.*
    
