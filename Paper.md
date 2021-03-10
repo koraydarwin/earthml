@@ -24,7 +24,8 @@
 
  - **Exponential:**
  
- $f(x, 1/$ $\beta)$ = $e^{-x/\beta}$ / $\beta$
+ 
+ <img src="https://render.githubusercontent.com/render/math?math=f(x, 1/\beta) = e^{-x/ \beta} / \beta">
  
  
  - *Where beta is the scale of the function*
@@ -33,7 +34,8 @@
  
   - **Poisson:**
  
- $f(k,$ $\lambda)$ = $\lambda^k \cdot e^{-\lambda}$ / $k!$
+ 
+ <img src="https://render.githubusercontent.com/render/math?math=f(k, \lambda) = \lambda^k \cdot e^{-\lambda} / k">
  
  
  - *For events with an expected separation $\lambda$ the Poisson distribution $f(k; $ $\lambda$) describes the probability of k events occurring within the observed interval $\lambda$ .*
@@ -42,7 +44,10 @@
  
   - **Rayleigh:**
  
- $f(x, $ $\alpha)$ = $x/\alpha^2 \cdot e^{-x^2 / 2 \cdot \alpha^2}$
+ 
+  <img src="https://render.githubusercontent.com/render/math?math=f(x, \alpha) = x/\alpha^2 \cdot e^{-x^2 / 2 \cdot \alpha^2}">
+ 
+ 
  
  
  - *Where alpha is the scale of the function*
@@ -51,7 +56,9 @@
  
   - **Gaussian:**
  
- $p(x)$ = ($1$ / $\sqrt{2 \cdot \mu \cdot \sigma^2}$)  $\cdot  (e^{-(x - \mu)^2 / 2 \cdot \sigma^2}$)
+ 
+ <img src="https://render.githubusercontent.com/render/math?math=p(x) = (1/\sqrt{2 \cdot \mu \cdot \sigma^2}) \cdot (e^{-(x - \mu)^2 / 2 \cdot \sigma^2})">
+ 
  
  
  - *Where mu is the mean and sigma is the standard deviation. Also, the square of the sigma is the variance.*
