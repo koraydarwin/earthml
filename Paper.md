@@ -1,8 +1,25 @@
 # Noise Augmentation
 
+**Outline**
+
+- **Sample histograms for distributions**
+   - **Gaussian Distribution**
+   - **Exponential Distribution**
+   - **Poisson Distribution**
+   - **Rayleigh Distribution**
+   - **Gaussian and Poisson Distribution**
+   - **Exponential and Poisson Distribution**
+
+- **Visualizing noise augmentation**
 
 
-- **Data augmentation are techniques to used for increasing the quantity of the data by applying some methods such as flipping, cropping, scaling, translating, and adding noise, but note that similar techniques can be seen on neural network architectures too, such as Dropout. These data augmentation techniques are generally used for photographs or audios in Deep Learning, but these techniques can be applied for earthquake data too. There is a model that does these techniques onto earthquake data, which is called EQTransformer.**
+
+- **Data augmentation are techniques to used for increasing the quantity of the data by applying some methods such as flipping, cropping, scaling, translating, and adding noise, but note that similar techniques can be seen on neural network architectures too, such as Dropout.**
+ 
+
+
+
+- **These data augmentation techniques are generally used for photographs or audios in Deep Learning, but these techniques can be applied for earthquake data too. There is a model that does these techniques onto earthquake data, which is called EQTransformer.**
 
 
 
@@ -13,124 +30,91 @@
 
 
  - **Exponential Distribution**
+
+
  - **Poisson Distribution**
+
+
  - **Rayleigh Distribution**
+
+
  - **Gaussian Distribution**
  
  
-   - **And the formulas are;**
+   - **And the graph for formulas and some properties of these distribution functions;**
 
 
 
- - **Exponential:**
- 
- 
- <img src="https://render.githubusercontent.com/render/math?math=f(x, 1/\beta) = e^{-x/ \beta} / \beta">
- 
- 
- - *Where beta is the scale of the function*
- 
- 
- 
-  - **Poisson:**
- 
- 
- <img src="https://render.githubusercontent.com/render/math?math=f(k, \lambda) = \lambda^k \cdot e^{-\lambda} / k">
- 
- 
- - *For events with an expected separation $\lambda$ the Poisson distribution $f(k; $ $\lambda$) describes the probability of k events occurring within the observed interval $\lambda$ .*
- 
- 
- 
-  - **Rayleigh:**
- 
- 
-  <img src="https://render.githubusercontent.com/render/math?math=f(x, \alpha) = x/\alpha^2 \cdot e^{-x^2 / 2 \cdot \alpha^2}">
- 
- 
- 
- 
- - *Where alpha is the scale of the function*
- 
- 
- 
-  - **Gaussian:**
- 
- 
- <img src="https://render.githubusercontent.com/render/math?math=p(x) = (1/\sqrt{2 \cdot \mu \cdot \sigma^2}) \cdot (e^{-(x - \mu)^2 / 2 \cdot \sigma^2})">
- 
- 
- 
- - *Where mu is the mean and sigma is the standard deviation. Also, the square of the sigma is the variance.*
- 
- 
- 
-- **For observing the distribution, NumPy random modules can be used with plots**
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/formula_table.png">
 
 
-## Motivation for Experiments
+
+ 
+ 
+ 
+- **To visualize the distributions, we create samples from each distribution using NumPy's random module and plot histograms**
 
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/original_plot.png">
+## Sample histograms for distributions
+
+
+### Gaussian Distribution
+
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/gaussian_plot.png">
 
    - *The above plot shows the Gaussian distribution function with a random scale, which is between 0.01 and 0.15, original EQTransformer noise augmentation parameters. And, the size is 60001.*
 
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/expo_plot_1.png">
 
-   - *The above plot shows the exponential distribution function with 5 scale parameter and the size is 60001.*
-   
-   
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/expo_plot_2.png">
 
-   - *Again, the plot belongs to exponential distribution function, but the scale parameter is 8 and the size is 60001.*
+### Exponential Distribution
+
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/exponential_plot.png">
+
+ 
    
    - *As can be seen, the shape of the plot is similar to each other. In contrast, if we look at the y-axis of the plot we will see that the magnitude of the axis is decreased, it becomes broader.*
-   
-   
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/poisson_plot_1.png">
 
-   - *The above plot shows the Poisson distribution function with 5 scale parameter and the size is 60001.*
-   
-   
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/poisson_plot_2.png">
 
-   - *Again, the plot belongs to Poisson distribution function, but the scale parameter is 8 and the size is 60001.*
    
+   
+### Poisson Distribution
+   
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/poisson_plot.png">
+
+
+
    - *As can be seen, the magnitude of the y-axis again changes, becomes broader. And, the shape changes a little bit as lambda value changes.*
    
    
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/ray_plot_1.png">
 
-   - *The above plot shows the Rayleigh distribution function with 5 scale parameter and the size is 60001.*
+### Rayleigh Distribution
+   
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/rayleigh_plot.png">
+
    
    
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/ray_plot_2.png">
+   - *As can be seen, the scale factor alpha changes the magnitude of the y-axis, becomes broader, and the shape a little bit around the 5-10 interval on x-axis.*
 
-   - *Again, the plot belongs to Rayleigh distribution function, but the scale parameter is 8 and the size is 60001.*
-   
-   - *As can be seen, the scale factor changes the magnitude of the y-axis, becomes broader, and the shape a little bit around the 5-10 interval on x-axis.*
-   
+
    
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/sevde_plot_1.png">
+### Gaussian and Poisson Distribution (Poisson is added directly onto Gaussian Distribution with same scale)
 
-   - *The above plot shows the mixture of Gaussian and Poisson Distribution with 5 scale parameter and the size 60001.*
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/gausspois_plot.png">
 
-
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/sevde_plot1_2.png">
-
-   - *Again, the plot belongs to mixture of Gaussian and Poisson distribution function, but the scale parameter is 8 and the size is 60001.*
-   
+ 
    - *The scale of the y-axis is decreased, becomes broader, and mid of the plot is intense, like Gaussian Distribution.*
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/sevde_plot2_1.png">
 
-   - *The above plot shows the mixture of exponential and Poisson Distribution with 5 scale parameter and the size 60001.*
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/sevde_plot2_2.png">
 
-   - *Again, the plot belongs to mixture of exponential and Poisson distribution function, but the scale parameter is 8 and the size is 60001.*
+### Exponential and Poisson Distribution (Exponential is added directly onto Poisson Distribution with same scale)
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/expopois_plot.png">
+
    
    - *The scale of the y-axis is decreased, broader, and its shape is similar to Exponential Distribution.*
    
@@ -152,7 +136,8 @@
    
    
    
-   
+ ## Visualizing noise augmentation with example waveforms
+ 
    
    
 - **An earthquake data can be represented like an NumPy array since it is a signal. Also, the noise that are created by distribution functions can be also shown like a waveform signal because it is an array. And, here is the plots of the signals.**
