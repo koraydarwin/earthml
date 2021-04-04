@@ -10,7 +10,14 @@
    - **Gaussian and Poisson Distribution**
    - **Exponential and Poisson Distribution**
 
-- **Visualizing noise augmentation**
+- **Visualizing noise distributions with example waveforms**
+   - **Gaussian Distribution (Waveform status)**
+   - **Exponential Distribution (Waveform status)**
+   - **Poisson Distribution (Waveform status)**
+   - **Rayleigh Distribution (Waveform status)**
+   - **Gaussian and Poisson Distributio (Waveform status)n**
+   - **Exponential and Poisson Distribution (Waveform status)**
+   
 
 
 
@@ -136,82 +143,59 @@
    
    
    
- ## Visualizing noise augmentation with example waveforms
+ ## Visualizing noise distributions with example waveforms
  
    
    
 - **An earthquake data can be represented like an NumPy array since it is a signal. Also, the noise that are created by distribution functions can be also shown like a waveform signal because it is an array. And, here is the plots of the signals.**
 
 
+### Gaussian Distributions (Waveform status)
+
+
 <img src="https://github.com/koraydarwin/earthml/blob/master/img/original_sig.png">  
 
-   - *This signal is created with the Gaussian distribution function array.*
 
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/expo_sig_1.png">  
-
-   - *This signal is created with the first exponential distribution function array.*
+### Exponential Distributions (Waveform status)
 
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/expo_sig_2.png"> 
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/nosig_expo.png">  
 
-   - *This signal is created with the second exponential distribution function array.*
    
-   - *The magnitude on the y-axis changed.*
    
+### Poisson Distributions (Waveform status)
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/poisson_sig_1.png"> 
-
-   - *This signal is created with the first Poisson distribution function array.*
-
-
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/poisson_sig_2.png"> 
-
-   - *This signal is created with the second Poisson distribution function array.*
-   
-   - *The magnitude on the y-axis is inreased.*
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/nosig_pois.png"> 
 
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/ray_sig_1.png"> 
+
+### Rayleigh Distributions (Waveform status)
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/nosig_ray.png"> 
  
-   - *This signal is created with the first Rayleigh distribution function array.*
-   
-
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/ray_sig_2.png"> 
-
-   - *This signal is created with the second Rayleigh distribution function array.*
-   
-   - *Again, the magnitude on the y-axis changed.*
-   
-   
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/sevde_signal11.png"> 
-
-   - *This signal is created with the first mixture of Gaussian and Poisson distribution function array.*
-   
-
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/sevde_signal12.png"> 
-
-   - *This signal is created with the second mixture of Gaussian and Poisson distribution function array.*
-   
-   - *The amplitude of the signal is increased.*
-   
-
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/sevde_signal21.png"> 
-
-   - *This signal is created with the first mixture of exponential and Poisson distribution function array.*
 
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/sevde_signal22.png"> 
+### Gaussian and Poisson Distributions (Waveform status)
+   
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/nosig_gausspois.png"> 
 
-   - *This signal is created with the second mixture of exponential and Poisson distribution function array.*
-   
-   - *The amplitude of the signal is increased.*
-   
-   
-   
+
+
+### Exponential and Poisson Distributions (Waveform status)
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/nosig_expopois.png"> 
+
+
+
+- *All plots above belong to the previous distributions that are shown with histograms.*
+
+- *On these plots, we can see the signal forms of the distributions with different scales on the same plot. Orange signals are created with greater scale value, for some plots, we can see that greater scale dominates the other signal, which is created with lower scale value.*
+
+
+
 
 - **In order to see the effect of the scale parameter, the distribution that are created above should be added onto original waveform.**
-
 
 
 ### The Original Waveform
