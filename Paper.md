@@ -153,7 +153,7 @@
 ### Gaussian Distributions (Waveform status)
 
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/original_sig.png">  
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/nosig_gauss.png">  
 
 
 
