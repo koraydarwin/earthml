@@ -714,20 +714,20 @@ def _add_noise(self, data, snr, rate):
  
 ### Mean Absolute Error Comparison with Recpect to P - Arrival Time
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/mae.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/maee.png">
 
    - *As can be seen, we have less error compared to original model, see Multiplicative Rayleigh*
    
 ### Root Mean Square Error Comparison with Recpect to P - Arrival Time
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/rmse.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/rmsee.png">
 
    - *As can be seen, we have less error compared to original model, again, see Additive Poisson Type-2*
    
    
 ### Detection Presicion Comparison
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/pres.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/press.png">
 
    - *As can be seen, we got higher detection presicion with respect to the EQTransformer's model, see Multiplicative Poisson.*
 
@@ -736,7 +736,7 @@ def _add_noise(self, data, snr, rate):
 ### Detection Recall Comparison
 
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/recall-2.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/recc.png">
 
    - *As can be seen, we got higher detection recall with respect to the EQTransformer's model, see Additive Exponential Type-2.*
 
@@ -748,14 +748,14 @@ def _add_noise(self, data, snr, rate):
 
 ### Comparison for Matched Event Numbers
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/nummat.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/mat.png">
 
    - *The comparison with the catalog is done according to P wave arrival time.*
    
 
 ### Comparison for Detection Numbers
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/numdet.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/de.png">
 
    - *More events is detected rather than the original model.*
    
