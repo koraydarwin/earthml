@@ -67,7 +67,7 @@
 
 ### Additive Noise
 
-- **Let <img src="https://render.githubusercontent.com/render/math?math=f(x)"> be our seismic signal, and <img src="https://render.githubusercontent.com/render/math?math=f(x)"> is composed of <img src="https://render.githubusercontent.com/render/math?math=g(x)"> and <img src="https://render.githubusercontent.com/render/math?math=n(x)"> where <img src="https://render.githubusercontent.com/render/math?math=n(x)"> is noise and <img src="https://render.githubusercontent.com/render/math?math=g(x)"> is our desired component of our signal. Then, <img src="https://render.githubusercontent.com/render/math?math=f(x) = g(x) + n(x)">. Gaussian noise is the most encountered noise class. In our research, the effect of the change in the distribution function is observed. EQTransformer also uses Gaussian Distribution.**
+- **Let <img src="https://render.githubusercontent.com/render/math?math=f(x)"> be our seismic signal, and <img src="https://render.githubusercontent.com/render/math?math=f(x)"> is composed of <img src="https://render.githubusercontent.com/render/math?math=g(x)"> and <img src="https://render.githubusercontent.com/render/math?math=n(x)"> where <img src="https://render.githubusercontent.com/render/math?math=n(x)"> is noise and <img src="https://render.githubusercontent.com/render/math?math=g(x)"> is our desired component of our signal. Then, <img src="https://render.githubusercontent.com/render/math?math=f(x) = g(x)+n(x)">. Gaussian noise is the most encountered noise class. In our research, the effect of the change in the distribution function is observed. EQTransformer also uses Gaussian Distribution.**
 
 
 
@@ -76,7 +76,7 @@
 
 ### Multiplicative Noise
 
-- **The same logic is again valid, the formulation is a little bit different. It is <img src="https://render.githubusercontent.com/render/math?math=f(x) = g(x) * [1 + n(x)]">. Here  is again noise, but for this one, the most common variant is “speckle noise”. For remarking, speckle noise is generally seemed on coherent light imaging. And, again in the observation, <img src="https://render.githubusercontent.com/render/math?math=n(x)"> changed variously.**
+- **The same logic is again valid, the formulation is a little bit different. It is <img src="https://render.githubusercontent.com/render/math?math=f(x) = g(x)*[1 + n(x)]">. Here  is again noise, but for this one, the most common variant is “speckle noise”. For remarking, speckle noise is generally seemed on coherent light imaging. And, again in the observation, <img src="https://render.githubusercontent.com/render/math?math=n(x)"> changed variously.**
 
 
 
