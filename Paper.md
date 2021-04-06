@@ -76,7 +76,7 @@
 
 ### Multiplicative Noise
 
-- **The same logic is again valid, the formulation is a little bit different. It is <img src="https://render.githubusercontent.com/render/math?math=f(x) = g(x)*(1+n(x))">. Here  is again noise, but for this one, the most common variant is “speckle noise”. For remarking, speckle noise is generally seemed on coherent light imaging. And, again in the observation, <img src="https://render.githubusercontent.com/render/math?math=n(x)"> changed variously.**
+- **The same logic is again valid, the formulation is a little bit different. It is <img src="https://render.githubusercontent.com/render/math?math=f(x)=g(x)*(1+n(x))">. Here  is again noise, but for this one, the most common variant is “speckle noise”. For remarking, speckle noise is generally seemed on coherent light imaging. And, again in the observation, <img src="https://render.githubusercontent.com/render/math?math=n(x)"> changed variously.**
 
 
 
@@ -220,7 +220,7 @@
 - **In order to see the effect of the scale parameter, the distribution that are created above should be added onto original waveform.**
 
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/filter.png"> 
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/14.png"> 
 
 
   - *The above plot belongs to original waveform data, that already includes background noise (titled with "raw"). And, below the "raw" titled plot, we see that the filtered version of the raw waveform data. Also, note that this waveform is between the 10.55 and 11.05 interval, 26th of September 2019. (Network Name: KO, Station Name: SLVT)* 
@@ -265,15 +265,14 @@
 ### The Original Waveform
 
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/original_wave.png"> 
-
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/normalwave_spec.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/1.png"> 
 
 
-  - *The above plot belongs to original waveform data, that already includes background noise. Also, this waveform is between the 10.55 and 11.05 interval, 26th of September 2019. (Network Name: KO, Station Name: SLVT)*
+
+  - *The above plot belongs to original waveform data, that already includes background noise. Also, this waveform is between the 10.55 and 11.05 interval, 26th of September 2019. (Network Name: KO, Station Name: SLVT).*
   
   
-- **Now, the fallowing plots shows the augmented version of the original waveform, additive or multiplicative noise are taken into account.**
+- **Now, the fallowing plots shows the augmented version of the original waveform and its augmented spectrogram, additive or multiplicative noise are taken into account.**
 
 
 
@@ -281,13 +280,10 @@
 
 ### Gaussian Noise Augmented, EQTransformer's Noise Augmentation
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/original_augmented.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/2.png">
   
    - *The left and the right sides of the augmented waveform plot are amplified a little bit.*
    
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/original_spec.png">
-
-   - *The spectrogram of the augmented waveform data (10.55 - 11.05 26th of September 2019)* 
    
    
 - **And the augmentation function is here;**
@@ -316,13 +312,10 @@ def _add_noise(self, data, snr, rate):
 
 ### Multiplicative Exponential Noise Augmented
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/expo_mul.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/3.png">
 
    - *As can be seen, the scale of the plot changed and during the mid of the plot, the shape also changed.*
    
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/multi-expo.png">
-
-   - *The spectrogram of the augmented waveform data (10.55 - 11.05 26th of September 2019)* 
    
    
    
@@ -353,13 +346,10 @@ def _add_noise(self, data, snr, rate):
    
 ### Multiplicative Poisson Noise Augmented
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/poisson_mul.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/4.png">
 
    - *As can be seen, the scale of the plot changed and during the mid of the plot, the shape also changed.*
    
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/multi-poi.png">
-
-   - *The spectrogram of the augmented waveform data (10.55 - 11.05 26th of September 2019)* 
    
    
    
@@ -390,13 +380,11 @@ def _add_noise(self, data, snr, rate):
    
 ### Multiplicative Rayleigh Noise Augmented
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/ray_mul.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/5.png">
 
    - *Again, as can be seen, the scale of the plot changed and during the mid of the plot, the shape also changed.*
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/multi-ray.png">
 
-   - *The spectrogram of the augmented waveform data (10.55 - 11.05 26th of September 2019)* 
    
 - **And the augmentation function is here;**
 
@@ -427,13 +415,10 @@ def _add_noise(self, data, snr, rate):
    
 ### Additive Exponential Noise Augmented (Type-1)
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/expo_add_1.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/6.png">
 
    - *The scale did not change, and the shape of the new augmented waveform is similar to the original one.*
-
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/expo-typ1.png">
-
-   - *The spectrogram of the augmented waveform data (10.55 - 11.05 26th of September 2019)* 
+ 
    
    
 - **And the augmentation function is here;**
@@ -466,13 +451,11 @@ def _add_noise(self, data, snr, rate):
 
 ### Additive Exponential Noise Augmented (Type-2)
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/expo_add_2.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/7.png">
 
    - *The scale and the shape is changed too much.*
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/expo-typ2.png">
 
-   - *The spectrogram of the augmented waveform data (10.55 - 11.05 26th of September 2019)* 
    
    
 - **And the augmentation function is here;**
@@ -503,13 +486,11 @@ def _add_noise(self, data, snr, rate):
 
 ### Additive Poisson Noise Augmented (Type-1)
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/poisson_add_1.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/8.png">
 
    - *The scale did not change, and the shape of the new augmented waveform is similar to the original one.*
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/poi-typ1.png">
 
-   - *The spectrogram of the augmented waveform data (10.55 - 11.05 26th of September 2019)* 
    
    
 - **And the augmentation function is here;**
@@ -540,13 +521,11 @@ def _add_noise(self, data, snr, rate):
 
 ### Additive Poisson Noise Augmented (Type-2)
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/poisson_add_2.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/9.png">
 
    - *The scale changed, but the shape is again similar to the original.*
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/poi-typ2.png">
 
-   - *The spectrogram of the augmented waveform data (10.55 - 11.05 26th of September 2019)* 
    
    
    
@@ -578,13 +557,11 @@ def _add_noise(self, data, snr, rate):
 
 ### Additive Rayleigh Noise Augmented (Type-1)
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/ray_add_1.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/10.png">
 
    - *The scale did not change, and the shape of the new augmented waveform is similar to the original one.*
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/ray-typ1.png">
 
-   - *The spectrogram of the augmented waveform data (10.55 - 11.05 26th of September 2019)* 
    
    
    
@@ -616,14 +593,12 @@ def _add_noise(self, data, snr, rate):
 
 ### Additive Rayleigh Noise Augmented (Type-2)
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/ray_add_2.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/11.png">
    
    - *The scale and the shape is changed too much.*
    
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/ray-typ2.png">
 
-   - *The spectrogram of the augmented waveform data (10.55 - 11.05 26th of September 2019)* 
    
    
 - **And the augmentation function is here;**
@@ -653,14 +628,12 @@ def _add_noise(self, data, snr, rate):
 ### Additive Gaussian & Poisson Noise Augmented
 
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/sevde_augmented_1.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/12.png">
 
    - *The amplitude is increased with respect to original waveform.*
    
    
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/sevde_spectrogram_1.png">
 
-   - *The spectrogram of the augmented waveform data (10.55 - 11.05 26th of September 2019)* 
    
    
 - **And the augmentation function is here;**
@@ -695,14 +668,10 @@ def _add_noise(self, data, snr, rate):
 ### Additive Exponential & Poisson Noise Augmented
 
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/sevde_augmented_2.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/13.png">
 
    - *The amplitude is increased, and the silhouette is similar to the original waveform, but more noisy.*
    
-   
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/sevde_spectrogram_2.png">
-
-   - *The spectrogram of the augmented waveform data (10.55 - 11.05 26th of September 2019)* 
    
    
 - **And the augmentation function is here;**
