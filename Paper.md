@@ -35,7 +35,7 @@
    - **Additive Gaussian & Poisson Noise Augmented**
    - **Additive Exponential & Poisson Noise Augmented**
 
-- **Comparison Between Models
+- **Comparison Between Models**
    - **Mean Absolure Error Comparison with Recpect to P - Arrival Time**
    - **Root Mean Square Error Comparison with Recpect to P - Arrival Time**
    - **Detection Presicion Comparison**
