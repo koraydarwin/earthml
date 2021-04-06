@@ -2,6 +2,11 @@
 
 **Outline**
 
+- **Introduction**
+  - **Additive Noise**
+  - **Multiplicative Noise**
+  - **The Distribution Functions That Are Used**
+
 - **Sample histograms for distributions**
    - **Gaussian Distribution**
    - **Exponential Distribution**
@@ -11,15 +16,36 @@
    - **Exponential and Poisson Distribution**
 
 - **Visualizing noise distributions with example waveforms**
-   - **Gaussian Distribution (Waveform status)**
-   - **Exponential Distribution (Waveform status)**
-   - **Poisson Distribution (Waveform status)**
-   - **Rayleigh Distribution (Waveform status)**
-   - **Gaussian and Poisson Distributio (Waveform status)n**
-   - **Exponential and Poisson Distribution (Waveform status)**
+   - **Distribution Plots (in waveform status)**
+   - **The Original Waveform (Raw) and Filtered Version**
+   - **Augmented Versions of the Original Waveform**
+
+- **Plots of the Augmented Waveforms (Experiments)**
+   - **The Original Waveform**
+   - **Gaussian Noise Augmented, EQTransformer's Noise Augmentation**
+   - **Multiplicative Exponential Noise Augmented**
+   - **Multiplicative  Poisson Noise Augmented**
+   - **Multiplicative Rayleigh Noise Augmented**
+   - **Additive Exponential Noise Augmented (Type-1)**
+   - **Additive Exponential Noise Augmented (Type-2)**
+   - **Additive Poisson Noise Augmented (Type-1)**
+   - **Additive Poisson Noise Augmented (Type-2)**
+   - **Additive Rayleigh Noise Augmented (Type-1)**
+   - **Additive Rayleigh Noise Augmented (Type-2)**
+   - **Additive Gaussian & Poisson Noise Augmented**
+   - **Additive Exponential & Poisson Noise Augmented**
+
+- **Comparison Between Models
+   - **Mean Absolure Error Comparison with Recpect to P - Arrival Time**
+   - **Root Mean Square Error Comparison with Recpect to P - Arrival Time**
+   - **Detection Presicion Comparison**
+   - **Detection Recall Comparison**
+   - **Comparison for Matched Event Numbers**
+   - **Comparison for Detection Numbers**
+
    
 
-
+## Introduction
 
 - **Data augmentation are techniques to used for increasing the quantity of the data by applying some methods such as flipping, cropping, scaling, translating, and adding noise, but note that similar techniques can be seen on neural network architectures too, such as Dropout.**
  
@@ -32,7 +58,30 @@
 
 
 
-- **EQTransformer package uses additive Gaussian noise for waveform data. Our aim was changing the distribution function and the type of the noise, additive or multiplicative. Then, observing the change in the number of detection, detected events, root mean square error, and mean average error. The functions that are used are;**
+- **EQTransformer package uses additive Gaussian noise for waveform data. Our aim was changing the distribution function and the type of the noise, additive or multiplicative. Then, observing the change in the number of detection, detected events, root mean square error, and mean average error.**
+
+
+- **Also, before moving to the functions that are used, we need to define the types of noise:**
+
+
+
+### Additive Noise
+
+- **Let <img src="https://render.githubusercontent.com/render/math?math=f(x)"> be our seismic signal, and <img src="https://render.githubusercontent.com/render/math?math=f(x)"> is composed of <img src="https://render.githubusercontent.com/render/math?math=g(x)"> and <img src="https://render.githubusercontent.com/render/math?math=n(x)"> where <img src="https://render.githubusercontent.com/render/math?math=n(x)"> is noise and <img src="https://render.githubusercontent.com/render/math?math=g(x)"> is our desired component of our signal. Then, <img src="https://render.githubusercontent.com/render/math?math=f(x) = g(x) + n(x)">. Gaussian noise is the most encountered noise class. In our research, the effect of the change in the distribution function is observed. EQTransformer also uses Gaussian Distribution.**
+
+
+
+
+
+
+### Multiplicative Noise
+
+- **The same logic is again valid, the formulation is a little bit different. It is <img src="https://render.githubusercontent.com/render/math?math=f(x) = g(x).[1 + n(x)]">. Here  is again noise, but for this one, the most common variant is “speckle noise”. For remarking, speckle noise is generally seemed on coherent light imaging. And, again in the observation, <img src="https://render.githubusercontent.com/render/math?math=n(x)"> changed variously.**
+
+
+
+
+### The Distribution Functions That Are Used
 
 
 
@@ -56,7 +105,9 @@
 
 
 
- 
+
+
+
  
  
 - **To visualize the distributions, we create samples from each distribution using NumPy's random module and plot histograms**
@@ -135,11 +186,7 @@
    - *That one shows the effect of a scale parameter over a probability distribution.*
    
  
- 
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Effect_of_a_scale_parameter_over_a_mixture_of_two_normal_probability_distributions.gif" width="400" height="400" />
 
-
-   - *And, this one shows the effect of a scale parameter over a mixture of two probability distributions.*
    
    
    
@@ -150,117 +197,50 @@
 - **An earthquake data can be represented like an NumPy array since it is a signal. Also, the noise that are created by distribution functions can be also shown like a waveform signal because it is an array. And, here is the plots of the signals.**
 
 
-### Gaussian Distributions (Waveform status)
+### Distribution Plots (in waveform status)
 
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/nosig_gauss.png">  
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/waveform.png">  
 
 
-
-### Exponential Distributions (Waveform status)
-
-
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/nosig_expo.png">  
-
-   
-   
-### Poisson Distributions (Waveform status)
-
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/nosig_pois.png"> 
-
-
-
-### Rayleigh Distributions (Waveform status)
-
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/nosig_ray.png"> 
- 
-
-
-### Gaussian and Poisson Distributions (Waveform status)
-   
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/nosig_gausspois.png"> 
-
-
-
-### Exponential and Poisson Distributions (Waveform status)
-
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/nosig_expopois.png"> 
 
 
 
 - *All plots above belong to the previous distributions that are shown with histograms.*
 
-- *On these plots, we can see the signal forms of the distributions with different scales on the same plot. Orange signals are created with greater scale value, for some plots, we can see that greater scale dominates the other signal, which is created with lower scale value.*
+- *On these plots, we can see the signal forms of the distributions with different scales on the same plot. Orange signals are created with greater scale value (8; orange signals), for some plots, we can see that greater scale dominates the other signal, which is created with lower scale value (5; blue signals).*
 
 
+
+
+
+### The Original Waveform (Raw) and Filtered Version
 
 
 - **In order to see the effect of the scale parameter, the distribution that are created above should be added onto original waveform.**
 
 
-### The Original Waveform
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/filter.png"> 
 
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/original_wave.png"> 
+  - *The above plot belongs to original waveform data, that already includes background noise (titled with "raw"). And, below the "raw" titled plot, we see that the filtered version of the raw waveform data. Also, note that this waveform is between the 10.55 and 11.05 interval, 26th of September 2019. (Network Name: KO, Station Name: SLVT)* 
 
 
-  - *The above plot belongs to original waveform data, that already includes background noise. Also, this waveform is between the 10.55 and 11.05 interval, 26th of September 2019. (Network Name: KO, Station Name: SLVT)*
+
+
+### Augmented Versions of the Original Waveform
   
   
-  
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/scale_ex_1.png"> 
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/eqsigcollage.png"> 
 
-   - *The above plot shows mixture of the original waveform and first exponential distribution, since the magnitude of the original waveform is too much, noise could not show its effect.*
-
-
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/scale_ex_2.png"> 
-
-   - *The above plot shows mixture of the original waveform and second exponential distribution, since the magnitude of the original waveform is too much, noise could not show its effect, again.*
-   
-
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/scale_poi_1.png"> 
-
-   - *The above plot shows mixture of the original waveform and first Poisson distribution, since the magnitude of the original waveform is too much, noise could not show its effect, again.*
-   
-
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/scale_poi_2.png">
-
-   - *The above plot shows mixture of the original waveform and second Poisson distribution, since the magnitude of the original waveform is too much, noise could not show its effect, again.*
+   - *The above plots shows that the signals, that are shown in the previous sub-section, are added onto the original waveform. In other words, simply augmented versions are shown. You see some blue signals, which are augmented with lower scaled (5) signal. Orange signals are created with higher scale value (8).*
 
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/scale_ray_1.png"> 
-
-   - *The above plot shows mixture of the original waveform and first Rayleigh distribution, since the magnitude of the original waveform is too much, noise could not show its effect, again.*
-   
-
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/scale_ray_2.png"> 
-
-   - *The above plot shows mixture of the original waveform and second Rayleigh distribution, since the magnitude of the original waveform is too much, noise could not show its effect, again.*
-   
-
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/scale_sevde1_1.png"> 
-
-   - *The above plot shows mixture of the original waveform and first Gaussian & Poisson distribution, since the magnitude of the original waveform is too much, noise could not show its effect, again.*
-   
-
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/scale_sevde1_2.png"> 
-
-   - *The above plot shows mixture of the original waveform and second Gaussian & Poisson distribution, since the magnitude of the original waveform is too much, noise could not show its effect, again.*
-   
-
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/scale_sevde2_1.png"> 
-
-   - *The above plot shows mixture of the original waveform and first Poisson & exponential distribution, since the magnitude of the original waveform is too much, noise could not show its effect, again.*
-   
-   
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/scale_sevde2_2.png"> 
-
-   - *The above plot shows mixture of the original waveform and second Poisson & exponential distribution, since the magnitude of the original waveform is too much, noise could not show its effect, again.*
 
    
    
    
-
+## Plots of the Augmented Waveforms (Experiments)
 
 
 
@@ -277,16 +257,6 @@
 
 
 
-#### Additive Noise
-
-- **Let $f(x)$ be our seismic signal, and $f(x)$ is composed of g(x) and $n(x)$ where $n(x)$ is noise and $g(x)$ is our desired component of our signal. Then, $ f(x) = g(x) + n(x)$. Gaussian noise is the most encountered noise class. In our research, the effect of the change in the distribution function is observed. EQTransformer also uses Gaussian Distribution.**
-
-
-#### Multiplicative Noise
-
-- **The same logic is again valid, the formulation is a little bit different. It is $f(x) = g(x) . (1 + n(x))$. Here $n(x)$ is again noise, but for this one, the most common variant is “speckle noise”. For remarking, speckle noise is generally seemed on coherent light imaging. And, again in the observation, $n(x)$ changed variously.**
-
-
 - **Before the augmentation, let's see the original waveform again.**
 
 
@@ -297,6 +267,8 @@
 
 <img src="https://github.com/koraydarwin/earthml/blob/master/img/original_wave.png"> 
 
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/normalwave_spec.png">
+
 
   - *The above plot belongs to original waveform data, that already includes background noise. Also, this waveform is between the 10.55 and 11.05 interval, 26th of September 2019. (Network Name: KO, Station Name: SLVT)*
   
@@ -305,7 +277,6 @@
 
 
 
-## Results
 
 
 ### Gaussian Noise Augmented, EQTransformer's Noise Augmentation
@@ -758,22 +729,11 @@ def _add_noise(self, data, snr, rate):
 
 
 
-
-
-  
-
-- **As you all know, car traffic, wind or ocean currents may affect the waveform that we took from a seismogram. If you look at a waveform data that are taken from two different located seismograms, also the time is same, you will realize that the waveform differs because of these effects. Now, that background noise will be compared with our artificial noise. And here is the original background noise.**
-
-
-
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/original_noise.png">
-
-   - *You can see the difference between the background and artificial noise, scale and shape are too different.*
+## Comparison Between Models
    
    
    
-   
-- **Up to that point, the effect of the noise augmentation with different noise types, different distribution functions and the difference between artificial and our artificial noise are shown. From that point, the waveform data is trained by EQTransformer's Trainer function, with microSTEAD data. Another model is also created which is original EQTransformer's noised. And, the machine learning model (h5 file format) is released.**
+- **Up to that point, the effect of the noise augmentation with different noise types, different distribution functions. From that point, the waveform data is trained by EQTransformer's Trainer function, with microSTEAD data. Another model is also created which is original EQTransformer's noised. And, the machine learning model (h5 file format) is released.**
 
 
 
@@ -783,13 +743,13 @@ def _add_noise(self, data, snr, rate):
    
  
  
-### Mean Average Error Comparison
+### Mean Absolute Error Comparison with Recpect to P - Arrival Time
 
 <img src="https://github.com/koraydarwin/earthml/blob/master/img/pmaef.png">
 
    - *As can be seen, we have less error compared to original model.*
    
-### Root Mean Square Error Comparison
+### Root Mean Square Error Comparison with Recpect to P - Arrival Time
 
 <img src="https://github.com/koraydarwin/earthml/blob/master/img/prmsef.png">
 
@@ -799,6 +759,13 @@ def _add_noise(self, data, snr, rate):
 ### Detection Presicion Comparison
 
 <img src="https://github.com/koraydarwin/earthml/blob/master/img/det_pre.png">
+
+
+
+### Detection Recall Comparison
+
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/recall.png">
 
 
 
@@ -822,6 +789,3 @@ def _add_noise(self, data, snr, rate):
    
 
 
-```python
-
-```
