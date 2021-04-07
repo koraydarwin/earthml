@@ -745,12 +745,15 @@ def _add_noise(self, data, snr, rate):
 - **The previous plots shows the comparison between models according to errors. Now, the comparison for the number of detected event numbers and the number of matched event numbers with the catalog. As be said before, you need to use mseed predictor function whose output is a csv file which contains event start time, P wave arrival time, S wave arrival time and so on.**
 
 
+- **Now, we can do another comparison with an earthquake events catalog, which is created by Kandilli Earthquake Observatory. This catalog is created for SLVT station and it contains 299 events.**
+
+
 
 ### Comparison for Matched Event Numbers
 
 <img src="https://github.com/koraydarwin/earthml/blob/master/img/mat.png">
 
-   - *The comparison with the catalog is done according to P wave arrival time.*
+   - *The comparison with the SLVT catalog is done according to P wave arrival time.*
    
 
 ### Comparison for Detection Numbers
