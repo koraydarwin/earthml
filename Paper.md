@@ -26,12 +26,9 @@
    - **Multiplicative Exponential Noise Augmented**
    - **Multiplicative  Poisson Noise Augmented**
    - **Multiplicative Rayleigh Noise Augmented**
-   - **Additive Exponential Noise Augmented (Type-1)**
-   - **Additive Exponential Noise Augmented (Type-2)**
-   - **Additive Poisson Noise Augmented (Type-1)**
-   - **Additive Poisson Noise Augmented (Type-2)**
-   - **Additive Rayleigh Noise Augmented (Type-1)**
-   - **Additive Rayleigh Noise Augmented (Type-2)**
+   - **Additive Exponential Noise Augmented**
+   - **Additive Poisson Noise Augmented**
+   - **Additive Rayleigh Noise Augmented**
    - **Additive Gaussian & Poisson Noise Augmented**
    - **Additive Exponential & Poisson Noise Augmented**
 
@@ -404,44 +401,10 @@ def _add_noise(self, data, snr, rate):
    
 
    
-   
-### Additive Exponential Noise Augmented (Type-1)
-
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/6.png">
-
-   - *The scale did not change, and the shape of the new augmented waveform is similar to the original one.*
- 
-   
-   
-- **And the augmentation function is here;**
 
 
 
-
-```json
-def _add_noise(self, data, snr, rate):
-        'Randomly add Gaussian noie with a random SNR into waveforms'
-        
-        data_noisy = np.empty((data.shape))
-        if np.random.uniform(0, 1) < rate and all(snr >= 10.0): 
-            data_noisy = np.empty((data.shape))
-            data_noisy[:, 0] = data[:,0] + np.random.exponential(np.random.randint(0,10), data.shape[0])
-            data_noisy[:, 1] = data[:,1] + np.random.exponential(np.random.randint(0,10), data.shape[0])
-            data_noisy[:, 2] = data[:,2] + np.random.exponential(np.random.randint(0,10), data.shape[0])   
-        else:
-            data_noisy = data
-        return data_noisy       
-```
-
-
-   
-      
-      
-
-
-
-
-### Additive Exponential Noise Augmented (Type-2)
+### Additive Exponential Noise Augmented 
 
 <img src="https://github.com/koraydarwin/earthml/blob/master/img/7.png">
 
@@ -474,44 +437,11 @@ def _add_noise(self, data, snr, rate):
    
       
    
-
-
-### Additive Poisson Noise Augmented (Type-1)
-
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/8.png">
-
-   - *The scale did not change, and the shape of the new augmented waveform is similar to the original one.*
-
-
-   
-   
-- **And the augmentation function is here;**
-
-
-
-
-```json
- def _add_noise(self, data, snr, rate):
-        'Randomly add Gaussian noie with a random SNR into waveforms'
-        
-        data_noisy = np.empty((data.shape))
-        if np.random.uniform(0, 1) < rate and all(snr >= 10.0): 
-            data_noisy = np.empty((data.shape))
-            data_noisy[:, 0] = data[:,0] + np.random.poisson(np.random.randint(0,10), data.shape[0])
-            data_noisy[:, 1] = data[:,1] + np.random.poisson(np.random.randint(0,10), data.shape[0])
-            data_noisy[:, 2] = data[:,2] + np.random.poisson(np.random.randint(0,10), data.shape[0])    
-        else:
-            data_noisy = data
-        return data_noisy   
-```
-
-
-   
       
    
 
 
-### Additive Poisson Noise Augmented (Type-2)
+### Additive Poisson Noise Augmented
 
 <img src="https://github.com/koraydarwin/earthml/blob/master/img/9.png">
 
@@ -544,46 +474,11 @@ def _add_noise(self, data, snr, rate):
 
    
       
+ 
    
 
 
-### Additive Rayleigh Noise Augmented (Type-1)
-
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/10.png">
-
-   - *The scale did not change, and the shape of the new augmented waveform is similar to the original one.*
-
-
-   
-   
-   
-- **And the augmentation function is here;**
-
-
-
-
-```json
-def _add_noise(self, data, snr, rate):
-        'Randomly add Gaussian noie with a random SNR into waveforms'
-        
-        data_noisy = np.empty((data.shape))
-        if np.random.uniform(0, 1) < rate and all(snr >= 10.0): 
-            data_noisy = np.empty((data.shape))
-            data_noisy[:, 0] = data[:,0] + np.random.rayleigh(np.random.randint(0,10), data.shape[0])
-            data_noisy[:, 1] = data[:,1] + np.random.rayleigh(np.random.randint(0,10), data.shape[0])
-            data_noisy[:, 2] = data[:,2] + np.random.rayleigh(np.random.randint(0,10), data.shape[0]) 
-        else:
-            data_noisy = data
-        return data_noisy   
-```
-
-
-   
-      
-   
-
-
-### Additive Rayleigh Noise Augmented (Type-2)
+### Additive Rayleigh Noise Augmented 
 
 <img src="https://github.com/koraydarwin/earthml/blob/master/img/11.png">
    
