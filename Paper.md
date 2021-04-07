@@ -189,7 +189,7 @@
 ### Distribution Plots (in waveform status)
 
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/waveform.png">  
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/justsignals.png">  
 
 
 
@@ -220,7 +220,7 @@
 ### Augmented Versions of the Original Waveform
   
   
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/eqsigcollage.png"> 
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/augment.png"> 
 
    - *The above plots shows that the signals, that are shown in the previous sub-section, are added onto the original waveform. In other words, simply augmented versions are shown. You see some blue signals, which are augmented with lower scaled (5) signal. Orange signals are created with higher scale value (8).*
 
