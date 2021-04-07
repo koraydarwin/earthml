@@ -70,10 +70,9 @@
 
 
 
-
 ### Multiplicative Noise
 
-- **The same logic is again valid, the formulation is a little bit different. It is <img src="https://render.githubusercontent.com/render/math?math=f(x)=g(x)*(1+n(x))">. Here  is again noise, but for this one, the most common variant is “speckle noise”. For remarking, speckle noise is generally seemed on coherent light imaging. And, again in the observation, <img src="https://render.githubusercontent.com/render/math?math=n(x)"> changed variously.**
+- **The same logic is again valid, the formulation is a little bit different. It is <img src="https://render.githubusercontent.com/render/math?math=f(x)=g(x)*(1 + n(x))"> . Here  is again noise, but for this one, the most common variant is “speckle noise”. For remarking, speckle noise is generally seemed on coherent light imaging. And, again in the observation, <img src="https://render.githubusercontent.com/render/math?math=n(x)"> changed variously.**
 
 
 
