@@ -177,16 +177,8 @@
    - *The scale of the y-axis is decreased, broader, and its shape is similar to Exponential Distribution.*
    
    
-
-- **Also, the effect of the scale parameter can be shown as fallowing:**
-
-
-<img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Effects_of_a_scale_parameter_on_a_positive-support_probability_distribution.gif" width="400" height="400" />
-
-   - *That one shows the effect of a scale parameter over a probability distribution.*
    
  
-
    
    
    
