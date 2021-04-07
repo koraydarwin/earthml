@@ -601,20 +601,20 @@ def _add_noise(self, data, snr, rate):
  
 ### Mean Absolute Error Comparison with Recpect to P - Arrival Time
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/maee.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/maeee.png">
 
    - *As can be seen, we have less error compared to original model, see Multiplicative Rayleigh*
    
 ### Root Mean Square Error Comparison with Recpect to P - Arrival Time
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/rmsee.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/rmseee.png">
 
    - *As can be seen, we have less error compared to original model, again, see Additive Poisson Type-2*
    
    
 ### Detection Presicion Comparison
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/press.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/presicionn.png">
 
    - *As can be seen, we got higher detection presicion with respect to the EQTransformer's model, see Multiplicative Poisson.*
 
@@ -623,7 +623,7 @@ def _add_noise(self, data, snr, rate):
 ### Detection Recall Comparison
 
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/recc.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/reccalll.png">
 
    - *As can be seen, we got higher detection recall with respect to the EQTransformer's model, see Additive Exponential Type-2.*
 
@@ -638,14 +638,14 @@ def _add_noise(self, data, snr, rate):
 
 ### Comparison for Matched Event Numbers
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/mat.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/matchedd.png">
 
    - *The comparison with the SLVT catalog is done according to P wave arrival time.*
    
 
 ### Comparison for Detection Numbers
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/de.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/detectionss.png">
 
    - *More events is detected rather than the original model.*
    
