@@ -623,7 +623,7 @@ def _add_noise(self, data, snr, rate):
 ### Detection Recall Comparison
 
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/reccalll.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/recalll.png">
 
    - *As can be seen, we got higher detection recall with respect to the EQTransformer's model, see Additive Exponential Type-2.*
 
