@@ -23,7 +23,7 @@ def noise_aug(noise_type,
     rate: float or int
     
     rate_thres: float or int
-       
+       rate threshold to be augmented     
        
     snr_thres: float or int
        signal to noise threshold to be augmented.
