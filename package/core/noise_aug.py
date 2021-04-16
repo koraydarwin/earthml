@@ -6,14 +6,14 @@ def noise_aug(nois_type):
     
     --------------"noise type can be"-----------------
     
-    "expo_mul: multiplicative exponential
-    "pois_mul: multiplicative Poisson
-    "ray_mul: multiplicative Rayleigh
-    "add_expo: additive exponential
-    "add_pois: additive Poisson
-    "add_ray: additive Rayleigh
-    "gauss_pois: additive Gaussian and Poisson
-    "expo_pois: additive exponential and Poisson
+    "expo_mul: multiplicative exponential"
+    "pois_mul: multiplicative Poisson"
+    "ray_mul: multiplicative Rayleigh"
+    "add_expo: additive exponential"
+    "add_pois: additive Poisson"
+    "add_ray: additive Rayleigh"
+    "gauss_pois: additive Gaussian and Poisson"
+    "expo_pois: additive exponential and Poisson"
     
     ---------------------------------------------------
     
