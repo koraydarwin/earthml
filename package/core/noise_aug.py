@@ -4,9 +4,11 @@ def noise_aug(noise_type,
               rate,
               snr_thres = 10,
               rate_thres = 1,
-              low_bound_gauss = None, 
-              up_bound_gauss = None, 
-              scale_expo = None):
+              scale_params = {
+              "low_bound_gauss": 0.01, 
+              "up_bound_gauss": 0.15, 
+              "scale_expo": 4}
+              ):
     
     
     '''
@@ -29,16 +31,14 @@ def noise_aug(noise_type,
     snr_thres: float or int
        signal to noise threshold to be augmented.
        
-    low_bound_gauss: float, (optional) is used for additive_gaussian
-       lower bound of interval which determines the standard deviation of additive_gaussian function.
+    scale_params: dict (optional)
+       "low_bound_gauss" which determines lower bound of the interval for standard deviation of additive_gaussian function. It is for additive_gaussian and its default value is 0.01.
        
-    up_bound_gauss: float, (optional) is used for additive_gaussian
-       upper bound of interval which determines the standard deviation of additive_gaussian function.
+       "up_bound_gauss" which determines upper bound of the interval for standard deviation of additive_gaussian function. It is for additive_gaussian and its default value is 0.15.
        
-    scale_expo: float or int, (optional) is used for multiplicative exponential
-       scale value for multiplicative_exponential function.
+       "scale_expo" which is scale value for multiplicative_exponential function and its default value is 4.
        
-
+       
     '''
     
     
@@ -53,9 +53,9 @@ def noise_aug(noise_type,
             data_noisy = np.empty((data.shape))
             if np.random.uniform(0, rate_thres) < rate and all(snr >= snr_thres): 
                 data_noisy = np.empty((data.shape))
-                data_noisy[:, 0] = data[:,0] + np.random.normal(0, np.random.uniform(low_bound_gauss, up_bound_gauss)*max(data[:,0]), data.shape[0])
-                data_noisy[:, 1] = data[:,1] + np.random.normal(0, np.random.uniform(low_bound_gauss, up_bound_gauss)*max(data[:,1]), data.shape[0])
-                data_noisy[:, 2] = data[:,2] + np.random.normal(0, np.random.uniform(low_bound_gauss, up_bound_gauss)*max(data[:,2]), data.shape[0])    
+                data_noisy[:, 0] = data[:,0] + np.random.normal(0, np.random.uniform(scale_params["low_bound_gauss"], scale_params["up_bound_gauss"])*max(data[:,0]), data.shape[0])
+                data_noisy[:, 1] = data[:,1] + np.random.normal(0, np.random.uniform(scale_params["low_bound_gauss"], scale_params["up_bound_gauss"])*max(data[:,1]), data.shape[0])
+                data_noisy[:, 2] = data[:,2] + np.random.normal(0, np.random.uniform(scale_params["low_bound_gauss"], scale_params["up_bound_gauss"])*max(data[:,2]), data.shape[0])    
             else:
                 data_noisy = data
                 
@@ -74,9 +74,9 @@ def noise_aug(noise_type,
             data_noisy = np.empty((data.shape))
             if np.random.uniform(0, rate_thres) < rate and all(snr >= snr_thres): 
                 data_noisy = np.empty((data.shape))
-                data_noisy[:, 0] = data[:,0] * (1 + np.random.exponential(scale_expo, data.shape[0]))
-                data_noisy[:, 1] = data[:,1] * (1 + np.random.exponential(scale_expo, data.shape[0]))
-                data_noisy[:, 2] = data[:,2] * (1 + np.random.exponential(scale_expo, data.shape[0])) 
+                data_noisy[:, 0] = data[:,0] * (1 + np.random.exponential(scale_params["scale_expo"], data.shape[0]))
+                data_noisy[:, 1] = data[:,1] * (1 + np.random.exponential(scale_params["scale_expo"], data.shape[0]))
+                data_noisy[:, 2] = data[:,2] * (1 + np.random.exponential(scale_params["scale_expo"], data.shape[0])) 
             else:
                 data_noisy = data
             
