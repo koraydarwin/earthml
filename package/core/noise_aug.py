@@ -37,6 +37,7 @@ def noise_aug(noise_type,
        
     scale_expo: float or int
        scale value for multiplicative_exponential function.
+       
 
     '''
     
@@ -93,3 +94,6 @@ def noise_aug(noise_type,
         
     
     return noise_augmented
+  
+  
+  
