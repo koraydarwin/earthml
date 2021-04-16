@@ -29,13 +29,13 @@ def noise_aug(noise_type,
     snr_thres: float or int
        signal to noise threshold to be augmented.
        
-    low_bound_gauss: float
+    low_bound_gauss: float, (optional) is used for additive_gaussian
        lower bound of interval which determines the standard deviation of additive_gaussian function.
        
-    up_bound_gauss: float
+    up_bound_gauss: float, (optional) is used for additive_gaussian
        upper bound of interval which determines the standard deviation of additive_gaussian function.
        
-    scale_expo: float or int
+    scale_expo: float or int, (optional) is used for multiplicative exponential
        scale value for multiplicative_exponential function.
        
 
