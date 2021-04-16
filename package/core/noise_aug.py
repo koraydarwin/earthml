@@ -4,7 +4,23 @@ def noise_aug(nois_type):
     
     noise_type = input()
     
-    #expo
+    --------------"noise type can be"-----------------
+    
+    "expo_mul: multiplicative exponential
+    "pois_mul: multiplicative Poisson
+    "ray_mul: multiplicative Rayleigh
+    "add_expo: additive exponential
+    "add_pois: additive Poisson
+    "add_ray: additive Rayleigh
+    "gauss_pois: additive Gaussian and Poisson
+    "expo_pois: additive exponential and Poisson
+    
+    ---------------------------------------------------
+    
+    
+   
+    -----"expo_mul"------
+    
     if noise_type == "expo_mul":
         
         f = open("EqT_utils.py", "r")
@@ -43,7 +59,11 @@ def noise_aug(nois_type):
             for row in lst:
                 output.write(str(row))
                 
-    #pois            
+                
+                
+    -----"pois_mul"------ 
+    
+    
     elif noise_type == "pois_mul":
         
         f = open("EqT_utils.py", "r")
@@ -84,7 +104,9 @@ def noise_aug(nois_type):
                 
                 
                 
-    #ray            
+    -----"ray_mul"------
+    
+    
     elif noise_type == "ray_mul":
         
         f = open("EqT_utils.py", "r")
@@ -127,7 +149,9 @@ def noise_aug(nois_type):
                 
                 
                 
-    #add_expo         
+    -----"add_expo"------
+    
+    
     elif noise_type == "add_expo":
         
         f = open("EqT_utils.py", "r")
@@ -167,7 +191,9 @@ def noise_aug(nois_type):
                 
                 
                 
-    #add_pois        
+    -----"add_pois"------
+    
+    
     elif noise_type == "add_pois":
         
         f = open("EqT_utils.py", "r")
@@ -208,7 +234,9 @@ def noise_aug(nois_type):
                 
                 
                 
-    #add_ray          
+    -----"add_ray"------     
+    
+    
     elif noise_type == "add_ray":
         
         f = open("EqT_utils.py", "r")
@@ -248,7 +276,9 @@ def noise_aug(nois_type):
                 
                 
                 
-    #gauss_pois          
+    -----"gauss_pois"------
+    
+    
     elif noise_type == "gauss_pois ":
         
         f = open("EqT_utils.py", "r")
@@ -292,7 +322,9 @@ def noise_aug(nois_type):
                 
                 
                 
-    #expo_pois          
+    -----"expo_pois"------
+    
+    
     elif noise_type == "expo_pois":
         
         f = open("EqT_utils.py", "r")
