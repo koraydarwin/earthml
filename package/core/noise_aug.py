@@ -2,10 +2,19 @@ def noise_aug(nois_type):
     
     
     
+    noise_type = input()
     
-    ##functions
-    
-    mulexpo = ["    def _add_noise(self, data, snr, rate): \n",
+    #expo
+    if noise_type == "expo_mul":
+        
+        f = open("EqT_utils.py", "r")
+
+        lst = []
+        for x in f:
+            lst.append(x)
+            
+            
+     mulexpo = ["    def _add_noise(self, data, snr, rate): \n",
           "        'Randomly add Gaussian noie with a random SNR into waveforms' \n",
           "",
           "        data_noisy = np.empty((data.shape)) \n",
@@ -17,126 +26,6 @@ def noise_aug(nois_type):
           "        else: \n",
           "            data_noisy = data \n",
           "        return data_noisy \n  "]
-
-
-
-    mulpois = ["    def _add_noise(self, data, snr, rate): \n",
-          "        'Randomly add Gaussian noie with a random SNR into waveforms' \n",
-          "",
-          "        data_noisy = np.empty((data.shape)) \n",
-          "        if np.random.uniform(0, 1) < rate and all(snr >= 10.0):  \n",
-          "            data_noisy = np.empty((data.shape)) \n",
-          "            data_noisy[:, 0] = data[:,0] * (1 + np.random.poisson(np.random.randint(0,10), data.shape[0])) \n",
-          "            data_noisy[:, 1] = data[:,1] * (1 + np.random.poisson(np.random.randint(0,10), data.shape[0])) \n",
-          "            data_noisy[:, 2] = data[:,2] * (1 + np.random.poisson(np.random.randint(0,10), data.shape[0])) \n",
-          "        else: \n",
-          "            data_noisy = data \n",
-          "        return data_noisy \n  "]
-
-
-
-    mulray = ["    def _add_noise(self, data, snr, rate): \n",
-          "        'Randomly add Gaussian noie with a random SNR into waveforms' \n",
-          "",
-          "        data_noisy = np.empty((data.shape)) \n",
-          "        if np.random.uniform(0, 1) < rate and all(snr >= 10.0):  \n",
-          "            data_noisy = np.empty((data.shape)) \n",
-          "            data_noisy[:, 0] = data[:,0] * (1 + np.random.rayleigh(np.random.randint(0,10), data.shape[0])) \n",
-          "            data_noisy[:, 1] = data[:,1] * (1 + np.random.rayleigh(np.random.randint(0,10), data.shape[0])) \n",
-          "            data_noisy[:, 2] = data[:,2] * (1 + np.random.rayleigh(np.random.randint(0,10), data.shape[0])) \n",
-          "        else: \n",
-          "            data_noisy = data \n",
-          "        return data_noisy \n  "]
-
-
-    add_expo = ["    def _add_noise(self, data, snr, rate): \n",
-          "        'Randomly add Gaussian noie with a random SNR into waveforms' \n",
-          "",
-          "        data_noisy = np.empty((data.shape)) \n",
-          "        if np.random.uniform(0, 1) < rate and all(snr >= 10.0): \n",
-          "            data_noisy = np.empty((data.shape)) \n",
-          "            data_noisy[:, 0] = data[:,0] + np.random.exponential(int(np.random.randint(0,10)*max(data[:,0])), data.shape[0]) \n",
-          "            data_noisy[:, 1] = data[:,1] + np.random.exponential(int(np.random.randint(0,10)*max(data[:,1])), data.shape[0]) \n",
-          "            data_noisy[:, 2] = data[:,2] + np.random.exponential(int(np.random.randint(0,10)*max(data[:,2])), data.shape[0]) \n",
-          "        else: \n",
-          "            data_noisy = data \n",
-          "        return data_noisy \n  "]
-
-
-
-    add_pois = ["    def _add_noise(self, data, snr, rate): \n",
-          "        'Randomly add Gaussian noie with a random SNR into waveforms' \n",
-          "",
-          "        data_noisy = np.empty((data.shape)) \n",
-          "        if np.random.uniform(0, 1) < rate and all(snr >= 10.0): \n",
-          "            data_noisy = np.empty((data.shape)) \n",
-          "            data_noisy[:, 0] = data[:,0] + np.random.poisson(int(np.random.randint(0,10)*max(data[:,0])), data.shape[0]) \n",
-          "            data_noisy[:, 1] = data[:,1] + np.random.poisson(int(np.random.randint(0,10)*max(data[:,1])), data.shape[0]) \n",
-          "            data_noisy[:, 2] = data[:,2] + np.random.poisson(int(np.random.randint(0,10)*max(data[:,2])), data.shape[0]) \n",
-          "        else: \n",
-          "            data_noisy = data \n",
-          "        return data_noisy \n  "]
-
-
-
-    add_ray = ["    def _add_noise(self, data, snr, rate): \n",
-          "        'Randomly add Gaussian noie with a random SNR into waveforms' \n",
-          "",
-          "        data_noisy = np.empty((data.shape)) \n",
-          "        if np.random.uniform(0, 1) < rate and all(snr >= 10.0): \n",
-          "            data_noisy = np.empty((data.shape)) \n",
-          "            data_noisy[:, 0] = data[:,0] + np.random.rayleigh(int(np.random.randint(0,10)*max(data[:,0])), data.shape[0]) \n",
-          "            data_noisy[:, 1] = data[:,1] + np.random.rayleigh(int(np.random.randint(0,10)*max(data[:,1])), data.shape[0]) \n",
-          "            data_noisy[:, 2] = data[:,2] + np.random.rayleigh(int(np.random.randint(0,10)*max(data[:,2])), data.shape[0]) \n",
-          "        else: \n",
-          "            data_noisy = data \n",
-          "        return data_noisy \n  "]
-
-
-
-    gauss_pois = ["    def _add_noise(self, data, snr, rate): \n",
-          "        'Randomly add Gaussian noie with a random SNR into waveforms' \n",
-          "",
-          "        data_noisy = np.empty((data.shape)) \n",
-          "        if np.random.uniform(0, 1) < rate and all(snr >= 10.0):  \n",
-          "            data_noisy = np.empty((data.shape)) \n",
-          "            data_noisy[:, 0] = data[:,0] + np.random.normal(0, np.random.uniform(0.01, 0.1)*max(data[:,0]), data.shape[0]) + np.random.poisson(np.random.uniform(0.01, 0.1)*max(data[:,0]), data.shape[0]) \n",
-          "            data_noisy[:, 1] = data[:,1] + np.random.normal(0, np.random.uniform(0.01, 0.1)*max(data[:,1]), data.shape[0]) + np.random.poisson(np.random.uniform(0.01, 0.1)*max(data[:,1]), data.shape[0]) \n",
-          "            data_noisy[:, 2] = data[:,2] + np.random.normal(0, np.random.uniform(0.01, 0.1)*max(data[:,2]), data.shape[0]) + np.random.poisson(np.random.uniform(0.01, 0.1)*max(data[:,2]), data.shape[0]) \n",
-          "        else: \n",
-          "            data_noisy = data \n",
-          "        return data_noisy \n  "]
-
-
-    expo_pois = ["    def _add_noise(self, data, snr, rate): \n",
-          "        'Randomly add Gaussian noie with a random SNR into waveforms' \n",
-          "",
-          "        data_noisy = np.empty((data.shape)) \n",
-          "        if np.random.uniform(0, 1) < rate and all(snr >= 10.0): \n",
-          "            data_noisy = np.empty((data.shape)) \n",
-          "            data_noisy[:, 0] = data[:,0] + np.random.exponential(np.random.uniform(0.01, 0.15)*max(data[:,0]), data.shape[0]) + np.random.poisson(np.random.uniform(0.01, 0.15)*max(data[:,0]), data.shape[0]) \n",
-          "            data_noisy[:, 1] = data[:,1] + np.random.exponential(np.random.uniform(0.01, 0.15)*max(data[:,1]), data.shape[0]) + np.random.poisson(np.random.uniform(0.01, 0.15)*max(data[:,1]), data.shape[0]) \n",
-          "            data_noisy[:, 2] = data[:,2] + np.random.exponential(np.random.uniform(0.01, 0.15)*max(data[:,2]), data.shape[0]) + np.random.poisson(np.random.uniform(0.01, 0.15)*max(data[:,2]), data.shape[0]) \n",
-          "        else: \n",
-          "            data_noisy = data \n",
-          "        return data_noisy \n  "]
-
-
-
-    
-    
-    
-    
-    noise_type = input()
-    
-    #expo
-    if noise_type == "expo_mul":
-        
-        f = open("EqT_utils.py", "r")
-
-        lst = []
-        for x in f:
-            lst.append(x)
             
             
         for i in range(218,230):
@@ -163,6 +52,21 @@ def noise_aug(nois_type):
         for x in f:
             lst.append(x)
             
+            
+        mulpois = ["    def _add_noise(self, data, snr, rate): \n",
+          "        'Randomly add Gaussian noie with a random SNR into waveforms' \n",
+          "",
+          "        data_noisy = np.empty((data.shape)) \n",
+          "        if np.random.uniform(0, 1) < rate and all(snr >= 10.0):  \n",
+          "            data_noisy = np.empty((data.shape)) \n",
+          "            data_noisy[:, 0] = data[:,0] * (1 + np.random.poisson(np.random.randint(0,10), data.shape[0])) \n",
+          "            data_noisy[:, 1] = data[:,1] * (1 + np.random.poisson(np.random.randint(0,10), data.shape[0])) \n",
+          "            data_noisy[:, 2] = data[:,2] * (1 + np.random.poisson(np.random.randint(0,10), data.shape[0])) \n",
+          "        else: \n",
+          "            data_noisy = data \n",
+          "        return data_noisy \n  "]
+
+            
         for i in range(218,230):
             lst[i] = lst[i].replace(lst[i], mulpois[i-218])
     
@@ -188,6 +92,22 @@ def noise_aug(nois_type):
         lst = []
         for x in f:
             lst.append(x)
+            
+            
+            
+        mulray = ["    def _add_noise(self, data, snr, rate): \n",
+          "        'Randomly add Gaussian noie with a random SNR into waveforms' \n",
+          "",
+          "        data_noisy = np.empty((data.shape)) \n",
+          "        if np.random.uniform(0, 1) < rate and all(snr >= 10.0):  \n",
+          "            data_noisy = np.empty((data.shape)) \n",
+          "            data_noisy[:, 0] = data[:,0] * (1 + np.random.rayleigh(np.random.randint(0,10), data.shape[0])) \n",
+          "            data_noisy[:, 1] = data[:,1] * (1 + np.random.rayleigh(np.random.randint(0,10), data.shape[0])) \n",
+          "            data_noisy[:, 2] = data[:,2] * (1 + np.random.rayleigh(np.random.randint(0,10), data.shape[0])) \n",
+          "        else: \n",
+          "            data_noisy = data \n",
+          "        return data_noisy \n  "]
+        
             
         for i in range(218,230):
             lst[i] = lst[i].replace(lst[i], mulray[i-218])
@@ -216,6 +136,20 @@ def noise_aug(nois_type):
         for x in f:
             lst.append(x)
             
+            
+        add_expo = ["    def _add_noise(self, data, snr, rate): \n",
+          "        'Randomly add Gaussian noie with a random SNR into waveforms' \n",
+          "",
+          "        data_noisy = np.empty((data.shape)) \n",
+          "        if np.random.uniform(0, 1) < rate and all(snr >= 10.0): \n",
+          "            data_noisy = np.empty((data.shape)) \n",
+          "            data_noisy[:, 0] = data[:,0] + np.random.exponential(int(np.random.randint(0,10)*max(data[:,0])), data.shape[0]) \n",
+          "            data_noisy[:, 1] = data[:,1] + np.random.exponential(int(np.random.randint(0,10)*max(data[:,1])), data.shape[0]) \n",
+          "            data_noisy[:, 2] = data[:,2] + np.random.exponential(int(np.random.randint(0,10)*max(data[:,2])), data.shape[0]) \n",
+          "        else: \n",
+          "            data_noisy = data \n",
+          "        return data_noisy \n  "]
+            
         for i in range(218,230):
             lst[i] = lst[i].replace(lst[i], add_expo[i-218])
     
@@ -241,6 +175,20 @@ def noise_aug(nois_type):
         lst = []
         for x in f:
             lst.append(x)
+            
+            
+        add_pois = ["    def _add_noise(self, data, snr, rate): \n",
+          "        'Randomly add Gaussian noie with a random SNR into waveforms' \n",
+          "",
+          "        data_noisy = np.empty((data.shape)) \n",
+          "        if np.random.uniform(0, 1) < rate and all(snr >= 10.0): \n",
+          "            data_noisy = np.empty((data.shape)) \n",
+          "            data_noisy[:, 0] = data[:,0] + np.random.poisson(int(np.random.randint(0,10)*max(data[:,0])), data.shape[0]) \n",
+          "            data_noisy[:, 1] = data[:,1] + np.random.poisson(int(np.random.randint(0,10)*max(data[:,1])), data.shape[0]) \n",
+          "            data_noisy[:, 2] = data[:,2] + np.random.poisson(int(np.random.randint(0,10)*max(data[:,2])), data.shape[0]) \n",
+          "        else: \n",
+          "            data_noisy = data \n",
+          "        return data_noisy \n  "]
             
         for i in range(218,230):
             lst[i] = lst[i].replace(lst[i], add_pois[i-218])
@@ -269,6 +217,20 @@ def noise_aug(nois_type):
         for x in f:
             lst.append(x)
             
+            
+        add_ray = ["    def _add_noise(self, data, snr, rate): \n",
+          "        'Randomly add Gaussian noie with a random SNR into waveforms' \n",
+          "",
+          "        data_noisy = np.empty((data.shape)) \n",
+          "        if np.random.uniform(0, 1) < rate and all(snr >= 10.0): \n",
+          "            data_noisy = np.empty((data.shape)) \n",
+          "            data_noisy[:, 0] = data[:,0] + np.random.rayleigh(int(np.random.randint(0,10)*max(data[:,0])), data.shape[0]) \n",
+          "            data_noisy[:, 1] = data[:,1] + np.random.rayleigh(int(np.random.randint(0,10)*max(data[:,1])), data.shape[0]) \n",
+          "            data_noisy[:, 2] = data[:,2] + np.random.rayleigh(int(np.random.randint(0,10)*max(data[:,2])), data.shape[0]) \n",
+          "        else: \n",
+          "            data_noisy = data \n",
+          "        return data_noisy \n  "]
+            
         for i in range(218,230):
             lst[i] = lst[i].replace(lst[i], add_ray[i-218])
     
@@ -294,6 +256,20 @@ def noise_aug(nois_type):
         lst = []
         for x in f:
             lst.append(x)
+            
+            
+        gauss_pois = ["    def _add_noise(self, data, snr, rate): \n",
+          "        'Randomly add Gaussian noie with a random SNR into waveforms' \n",
+          "",
+          "        data_noisy = np.empty((data.shape)) \n",
+          "        if np.random.uniform(0, 1) < rate and all(snr >= 10.0):  \n",
+          "            data_noisy = np.empty((data.shape)) \n",
+          "            data_noisy[:, 0] = data[:,0] + np.random.normal(0, np.random.uniform(0.01, 0.1)*max(data[:,0]), data.shape[0]) + np.random.poisson(np.random.uniform(0.01, 0.1)*max(data[:,0]), data.shape[0]) \n",
+          "            data_noisy[:, 1] = data[:,1] + np.random.normal(0, np.random.uniform(0.01, 0.1)*max(data[:,1]), data.shape[0]) + np.random.poisson(np.random.uniform(0.01, 0.1)*max(data[:,1]), data.shape[0]) \n",
+          "            data_noisy[:, 2] = data[:,2] + np.random.normal(0, np.random.uniform(0.01, 0.1)*max(data[:,2]), data.shape[0]) + np.random.poisson(np.random.uniform(0.01, 0.1)*max(data[:,2]), data.shape[0]) \n",
+          "        else: \n",
+          "            data_noisy = data \n",
+          "        return data_noisy \n  "]
             
         for i in range(218,230):
             lst[i] = lst[i].replace(lst[i], gauss_pois[i-218])
@@ -324,6 +300,20 @@ def noise_aug(nois_type):
         lst = []
         for x in f:
             lst.append(x)
+            
+            
+        expo_pois = ["    def _add_noise(self, data, snr, rate): \n",
+          "        'Randomly add Gaussian noie with a random SNR into waveforms' \n",
+          "",
+          "        data_noisy = np.empty((data.shape)) \n",
+          "        if np.random.uniform(0, 1) < rate and all(snr >= 10.0): \n",
+          "            data_noisy = np.empty((data.shape)) \n",
+          "            data_noisy[:, 0] = data[:,0] + np.random.exponential(np.random.uniform(0.01, 0.15)*max(data[:,0]), data.shape[0]) + np.random.poisson(np.random.uniform(0.01, 0.15)*max(data[:,0]), data.shape[0]) \n",
+          "            data_noisy[:, 1] = data[:,1] + np.random.exponential(np.random.uniform(0.01, 0.15)*max(data[:,1]), data.shape[0]) + np.random.poisson(np.random.uniform(0.01, 0.15)*max(data[:,1]), data.shape[0]) \n",
+          "            data_noisy[:, 2] = data[:,2] + np.random.exponential(np.random.uniform(0.01, 0.15)*max(data[:,2]), data.shape[0]) + np.random.poisson(np.random.uniform(0.01, 0.15)*max(data[:,2]), data.shape[0]) \n",
+          "        else: \n",
+          "            data_noisy = data \n",
+          "        return data_noisy \n  "]
             
         for i in range(218,230):
             lst[i] = lst[i].replace(lst[i], expopois[i-218])
@@ -357,7 +347,7 @@ def noise_aug(nois_type):
             output.write(str(row)) 
             
             
-    #import noise_type_train
+    #from noise_type_train import noise_aug
     
    
     
