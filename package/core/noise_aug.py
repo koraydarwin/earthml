@@ -21,6 +21,7 @@ def noise_aug(noise_type,
        signal to noise ratio.
        
     rate: float or int
+       rate of augmentation
     
     rate_thres: float or int
        rate threshold to be augmented     
