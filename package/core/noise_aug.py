@@ -45,12 +45,12 @@ def noise_aug(noise_type,
         
     if noise_type == "additive_gaussian":
         
-        noise_augmented = gauss_add_noise(data)
+        noise_augmented = gauss_add_noise(data, snr, rate, snr_thres, rate_thres, scale_params = {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15})
         
     
     elif noise_type == "multiplicative_exponential":
         
-        noise_augmented = expo_add_noise(data)
+        noise_augmented = expo_add_noise(data, snr, rate, snr_thres, rate_thres, scale_params = {"scale_expo": 4})
     
      
     else:
