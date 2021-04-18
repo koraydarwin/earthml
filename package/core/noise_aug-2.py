@@ -42,9 +42,7 @@ def noise_aug(noise_type,
        
        
     '''
-      
-    
-    
+        
     if noise_type == "additive_gaussian":
         
         noise_augmented = gauss_add_noise(data)
@@ -80,7 +78,6 @@ def gauss_add_noise(data, snr, rate, snr_thres, rate_thres, scale_params = {"low
         data_noisy = data
                 
     return data_noisy 
-
 
 
   
