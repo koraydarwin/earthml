@@ -1,3 +1,5 @@
+import numpy as np
+
 def noise_aug(noise_type,
               data,
               snr,
