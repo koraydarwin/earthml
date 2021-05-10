@@ -12,7 +12,8 @@ def test_noise_aug():
                                 scale_params = {
                                 "low_bound_gauss": 0.01, 
                                 "up_bound_gauss": 0.15, 
-                                "scale_expo": 4}).shape[0]
+                                "scale_expo": 4,
+                                "scale_rayleigh":4}).shape[0]
     
     
     assert shape == augmented_shape 
