@@ -1,5 +1,5 @@
 import numpy as np
-from package.core import noise_aug
+from core.noise_aug import noise_aug
 
 
 
