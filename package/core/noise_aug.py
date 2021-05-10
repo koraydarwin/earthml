@@ -40,7 +40,7 @@ def noise_aug(noise_type,
        "up_bound_gauss" which determines upper bound of the interval for standard deviation of additive_gaussian function. 
        It is for additive_gaussian and its default value is 0.15.
        
-       "scale_expo" which is scale value for multiplicative_exponential function and its default value is 4.
+       "scale_expo" which is scale value for multiplicative_exponential and additive_exponential function and its default value is 4.
        
        "scale_rayleigh" which is scale value for multiplicative_rayleigh function and its default value is 4.
        
