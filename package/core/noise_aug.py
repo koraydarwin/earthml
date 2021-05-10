@@ -9,7 +9,7 @@ def noise_aug(noise_type,
               scale_params = {
               "low_bound_gauss": 0.01, 
               "up_bound_gauss": 0.15, 
-              "scale_expo": 4,
+              "scale_exp": 4,
               "scale_rayleigh":4}
               ):
      
@@ -40,7 +40,7 @@ def noise_aug(noise_type,
        "up_bound_gauss" which determines upper bound of the interval for standard deviation of additive_gaussian function. 
        It is for additive_gaussian and its default value is 0.15.
        
-       "scale_expo" which is scale value for multiplicative_exponential and additive_exponential function and its default value is 4.
+       "scale_exp" which is scale value for multiplicative_exponential and additive_exponential function and its default value is 4.
        
        "scale_rayleigh" which is scale value for multiplicative_rayleigh function and its default value is 4.
        
@@ -50,11 +50,11 @@ def noise_aug(noise_type,
     if noise_type == "additive_gaussian":
         noise_augmented = gauss_add_noise(data, snr, rate, snr_thres, rate_thres, scale_params = {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15})
     elif noise_type == "multiplicative_exponential":
-        noise_augmented = expo_mult_noise(data, snr, rate, snr_thres, rate_thres, scale_params = {"scale_expo": 4})
+        noise_augmented = exp_mult_noise(data, snr, rate, snr_thres, rate_thres, scale_params = {"scale_exp": 4})
     elif noise_type == "multiplicative_rayleigh":
         noise_augmented = ray_mult_noise(data, snr, rate, snr_thres, rate_thres, scale_params = {"scale_rayleigh":4})
     elif noise_type == "additive_exponential":
-        noise_augmented = expo_add_noise(data, snr, rate, snr_thres, rate_thres, scale_params = {"scale_expo": 4})
+        noise_augmented = exp_add_noise(data, snr, rate, snr_thres, rate_thres, scale_params = {"scale_exp": 4})
     else:
         raise NameError(noise_type  + " " + + "could not be found, enter valid noise_type")
     return noise_augmented
