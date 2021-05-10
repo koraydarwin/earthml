@@ -1,4 +1,4 @@
-from package.core import noise_aug
+from core.noise_aug import noise_aug
 
 def test_noise_aug():
     """ Checks whether the dimension of the original data is equal to the augmented data. """
