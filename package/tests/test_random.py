@@ -1,10 +1,12 @@
 import numpy as np
 from package.core import noise_aug
 
-np.random.seed(3)
+
 
 
 def test_random():
+  
+  np.random.seed(3)
   augmented1 = noise_aug(noise_type,
               data,
               snr,
