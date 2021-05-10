@@ -4,7 +4,7 @@ from package.core import noise_aug
 
 
 
-def test_random():
+def test_random(augmented1, augmented2):
   """ Checks whether the functions in noise_aug return the same noisy_data """
   
   np.random.seed(3)
