@@ -5,6 +5,7 @@ from package.core import noise_aug
 
 
 def test_random():
+  """ Checks whether the functions in noise_aug return the same noisy_data """
   
   np.random.seed(3)
   augmented1 = noise_aug(noise_type,
@@ -20,6 +21,7 @@ def test_random():
               "scale_rayleigh":4}
               )
   
+  np.random.seed(3)
   augmented2 = noise_aug(noise_type,
               data,
               snr,
