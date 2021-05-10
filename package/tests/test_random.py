@@ -16,7 +16,8 @@ def test_random():
               scale_params = {
               "low_bound_gauss": 0.01, 
               "up_bound_gauss": 0.15, 
-              "scale_expo": 4}
+              "scale_expo": 4,
+              "scale_rayleigh":4}
               )
   
   augmented2 = noise_aug(noise_type,
@@ -28,7 +29,8 @@ def test_random():
               scale_params = {
               "low_bound_gauss": 0.01, 
               "up_bound_gauss": 0.15, 
-              "scale_expo": 4}
+              "scale_expo": 4,
+              "scale_rayleigh":4}
               )
   
   assert augmented1 == augmented2
