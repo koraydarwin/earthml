@@ -1,6 +1,7 @@
 from package.core import noise_aug
 
 def test_noise_aug():
+    """ Checks whether the dimension of the original data is equal to the augmented data. """
     
     shape = data.shape[0]
     augmented_shape = noise_aug(noise_type,
