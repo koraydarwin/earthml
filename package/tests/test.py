@@ -50,12 +50,28 @@ def test_dimension():
                                 "up_bound_gauss": 0.15, 
                                 "scale": 4}).shape
     assert raw_data_shape == noisy_data_shape
+    
+def test_add_gaus():
+    np.random.seed(3)
+    raw_data = np.random.randint(10, size = (4,3))
+    
+    noisy_data = noise_aug("additive_gaussian",
+              data,
+              11,
+              2,
+              snr_thres = 10,
+              rate_thres = 1,
+              scale_params = {
+              "low_bound_gauss": 0.01, 
+              "up_bound_gauss": 0.15, 
+              "scale": 4})
+    assert not(raw_data == noisy_data).all()
 
 def test_mult_exp():
     np.random.seed(3)
-    data = np.random.randint(10, size = (4,3))
+    raw_data = np.random.randint(10, size = (4,3))
     
-    augmented = noise_aug("multiplicative_exponential",
+    noisy_data = noise_aug("multiplicative_exponential",
               data,
               11,
               2,
@@ -65,13 +81,13 @@ def test_mult_exp():
               "low_bound_gauss": 0.01, 
               "up_bound_gauss": 0.15, 
               "scale": 4})
-    assert not(data == augmented).all()
+    assert not(raw_data == noisy_data).all()
     
 def test_mult_ray():
     np.random.seed(3)
-    data = np.random.randint(10, size = (4,3))
+    raw_data = np.random.randint(10, size = (4,3))
     
-    augmented = noise_aug("multiplicative_rayleigh",
+    noisy_data = noise_aug("multiplicative_rayleigh",
               data,
               11,
               2,
@@ -81,28 +97,12 @@ def test_mult_ray():
               "low_bound_gauss": 0.01, 
               "up_bound_gauss": 0.15, 
               "scale": 4})
-    assert not(data == augmented).all()
-
-def test_add_gaus():
-    np.random.seed(3)
-    data = np.random.randint(10, size = (4,3))
-    
-    augmented = noise_aug("additive_gaussian",
-              data,
-              11,
-              2,
-              snr_thres = 10,
-              rate_thres = 1,
-              scale_params = {
-              "low_bound_gauss": 0.01, 
-              "up_bound_gauss": 0.15, 
-              "scale": 4})
-    assert not(data == augmented).all()
+    assert not(raw_data == noisy_data).all()
 
 def test_add_exp():
     np.random.seed(3)
-    data = np.random.randint(10, size = (4,3))
-    augmented = noise_aug("additive_exponential",
+    raw_data = np.random.randint(10, size = (4,3))
+    noisy_data = noise_aug("additive_exponential",
               data,
               11,
               2,
@@ -112,4 +112,4 @@ def test_add_exp():
               "low_bound_gauss": 0.01, 
               "up_bound_gauss": 0.15, 
               "scale": 4})
-     assert not(data == augmented).all()
+     assert not(raw_data == noisy_data).all()
