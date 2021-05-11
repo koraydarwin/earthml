@@ -65,12 +65,9 @@ def gauss_add_noise(data, snr, rate, snr_thres, rate_thres, scale_params = None)
     data_noisy = np.empty(data.shape)
     if np.random.uniform(0, rate_thres) < rate and snr >= snr_thres: 
         data_noisy = np.empty((data.shape))
-        data_noisy[:, 0] = data[:,0] + np.random.normal(0, np.random.uniform(scale_params["low_bound_gauss"], 
-                                                                             scale_params["up_bound_gauss"])*max(data[:,0]), data.shape[0])
-        data_noisy[:, 1] = data[:,1] + np.random.normal(0, np.random.uniform(scale_params["low_bound_gauss"], 
-                                                                             scale_params["up_bound_gauss"])*max(data[:,1]), data.shape[0])
-        data_noisy[:, 2] = data[:,2] + np.random.normal(0, np.random.uniform(scale_params["low_bound_gauss"], 
-                                                                             scale_params["up_bound_gauss"])*max(data[:,2]), data.shape[0])    
+        for i in range(3):
+            data_noisy[:, i] = data[:,i] + np.random.normal(0, np.random.uniform(scale_params["low_bound_gauss"], 
+                                                                             scale_params["up_bound_gauss"])*max(data[:,0]), data.shape[0]) 
     else:
         data_noisy = data
     return data_noisy 
@@ -83,9 +80,7 @@ def exp_mult_noise(data, snr, rate, snr_thres, rate_thres, scale_params = None):
     data_noisy = np.empty(data.shape)
     if np.random.uniform(0, rate_thres) < rate and snr >= snr_thres: 
         data_noisy = np.empty((data.shape))
-        data_noisy[:, 0] = data[:,0] * (1 + np.random.exponential(scale_params["scale"], data.shape[0]))
-        data_noisy[:, 1] = data[:,1] * (1 + np.random.exponential(scale_params["scale"], data.shape[0]))
-        data_noisy[:, 2] = data[:,2] * (1 + np.random.exponential(scale_params["scale"], data.shape[0])) 
+        data_noisy = data * (1 + np.random.exponential(scale_params['scale'], data.shape))
     else:
         data_noisy = data
     return data_noisy   
@@ -97,9 +92,7 @@ def ray_mult_noise(data, snr, rate, snr_thres, rate_thres, scale_params = None):
     data_noisy = np.empty(data.shape)
     if np.random.uniform(0, rate_thres) < rate and snr >= snr_thres: 
         data_noisy = np.empty((data.shape))
-        data_noisy[:, 0] = data[:,0] * (1 + np.random.rayleigh(scale_params["scale"], data.shape[0]))
-        data_noisy[:, 1] = data[:,1] * (1 + np.random.rayleigh(scale_params["scale"], data.shape[0]))
-        data_noisy[:, 2] = data[:,2] * (1 + np.random.rayleigh(scale_params["scale"], data.shape[0])) 
+        data_noisy = data * (1 + np.random.rayleigh(scale_params['scale'], data.shape))
     else:
         data_noisy = data
     return data_noisy   
@@ -111,10 +104,8 @@ def exp_add_noise(data, snr, rate, snr_thres, rate_thres, scale_params = None):
     data_noisy = np.empty(data.shape)
     if np.random.uniform(0, rate_thres) < rate and snr >= snr_thres: 
         data_noisy = np.empty((data.shape))
-        signs = np.random.choice([-1,1],data.shape[0])
-        data_noisy[:, 0] = data[:, 0] + (signs*np.random.exponential(scale_params["scale"], data.shape[0]))
-        data_noisy[:, 1] = data[:, 1] + (signs*np.random.exponential(scale_params["scale"], data.shape[0]))
-        data_noisy[:, 2] = data[:, 2] + (signs*np.random.exponential(scale_params["scale"], data.shape[0])) 
+        signs = np.random.choice([-1,1],data.shape)
+        data_noisy = data + signs * np.random.exponential(scale_params['scale'], data.shape)
     else:
         data_noisy = data
     return data_noisy   
