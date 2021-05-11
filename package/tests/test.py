@@ -20,7 +20,6 @@ def test_random():
               11,
               2,
               {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1})
-    
     assert (augmented1 == augmented2).all()
 
 def test_dimension():
@@ -43,7 +42,6 @@ def test_add_gaus():
               11,
               2,
               {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1})
-    
     assert not(raw_data == noisy_data).all()
 
 def test_mult_exp():
@@ -55,7 +53,6 @@ def test_mult_exp():
               11,
               2,
               {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1})
-    
     assert not(raw_data == noisy_data).all()
     
 def test_mult_ray():
@@ -67,7 +64,6 @@ def test_mult_ray():
               11,
               2,
               {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1})
-    
     assert not(raw_data == noisy_data).all()
 
 def test_add_exp():
@@ -78,5 +74,4 @@ def test_add_exp():
               11,
               2,
               {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1})
-    
     assert not(raw_data == noisy_data).all()
