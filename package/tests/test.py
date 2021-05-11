@@ -18,7 +18,7 @@ def test_random():
               scale_params = {
               "low_bound_gauss": 0.01, 
               "up_bound_gauss": 0.15, 
-              "scale_expo": 4,
+              "scale_exp": 4,
               "scale_rayleigh":4}
               )
   
@@ -32,7 +32,7 @@ def test_random():
               scale_params = {
               "low_bound_gauss": 0.01, 
               "up_bound_gauss": 0.15, 
-              "scale_expo": 4,
+              "scale_exp": 4,
               "scale_rayleigh":4}
               )
   
@@ -53,7 +53,7 @@ def test_dimension():
                                 scale_params = {
                                 "low_bound_gauss": 0.01, 
                                 "up_bound_gauss": 0.15, 
-                                "scale_expo": 4,
+                                "scale_exp": 4,
                                 "scale_rayleigh":4}).shape
     
     
@@ -74,7 +74,7 @@ def test_mult_exp():
               scale_params = {
               "low_bound_gauss": 0.01, 
               "up_bound_gauss": 0.15, 
-              "scale_expo": 4,
+              "scale_exp": 4,
               "scale_rayleigh":4}
               )
     
@@ -94,7 +94,7 @@ def test_mult_ray():
               scale_params = {
               "low_bound_gauss": 0.01, 
               "up_bound_gauss": 0.15, 
-              "scale_expo": 4,
+              "scale_exp": 4,
               "scale_rayleigh":4}
               )
     
@@ -114,7 +114,7 @@ def test_add_gaus():
               scale_params = {
               "low_bound_gauss": 0.01, 
               "up_bound_gauss": 0.15, 
-              "scale_expo": 4,
+              "scale_exp": 4,
               "scale_rayleigh":4}
               )
     
@@ -135,7 +135,7 @@ def test_add_exp():
               scale_params = {
               "low_bound_gauss": 0.01, 
               "up_bound_gauss": 0.15, 
-              "scale_expo": 4,
+              "scale_exp": 4,
               "scale_rayleigh":4}
               )
     
