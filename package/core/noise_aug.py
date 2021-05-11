@@ -94,7 +94,7 @@ def exp_mult_noise(data, snr, rate, snr_thres, rate_thres, scale_params = None):
     return data_noisy   
 
 RAYLEIGH_DEFAULT_SCALE_PARAM = {"scale_rayleigh": 4}
-def ray_mult_noise(data, snr, rate, snr_thres, scale_params = None):
+def ray_mult_noise(data, snr, rate, snr_thres, rate_thres, scale_params = None):
     if scale_params is None:
         scale_params = RAYLEIGH_DEFAULT_SCALE_PARAM 
     'Apply multiplicative Rayleigh noise with a random scale value onto raw waveform data.'
