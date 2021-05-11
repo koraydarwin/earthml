@@ -111,7 +111,7 @@ def ray_mult_noise(data, snr, rate, snr_thres, rate_thres, scale_params = None):
 def exp_add_noise(data, snr, rate, snr_thres, rate_thres, scale_params = None):
     if scale_params is None:
         scale_params = EXPONENTIAL_DEFAULT_SCALE_PARAM
-    'Randomly add exponential noise onto waveforms.'
+    'Apply additive Gaussian noise with a random scale variable onto raw waveform data.'
     data_noisy = np.empty(data.shape)
     if np.random.uniform(0, rate_thres) < rate and snr >= snr_thres: 
         data_noisy = np.empty((data.shape))
