@@ -64,9 +64,7 @@ GAUSS_DEFAULT_SCALE_PARAMS = {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15}
 def gauss_add_noise(data, snr, rate, snr_thres, rate_thres, scale_params = None):
     if scale_params is None:
         scale_params = GAUSS_DEFAULT_SCALE_PARAMS
-            
     'Apply additive Gaussian noise with a random scale variable onto raw waveform data.'
-            
     data_noisy = np.empty(data.shape)
     if np.random.uniform(0, rate_thres) < rate and snr >= snr_thres: 
         data_noisy = np.empty((data.shape))
@@ -84,7 +82,7 @@ EXPONENTIAL_DEFAULT_SCALE_PARAM = {"scale_exp": 4}
 def exp_mult_noise(data, snr, rate, snr_thres, rate_thres, scale_params = None):
     if scale_params is None:
         scale_params = EXPONENTIAL_DEFAULT_SCALE_PARAM 
-    'Apply multiplicative Rayleigh noise with a random scale value onto raw waveform data.'
+    'Apply multiplicative exponential noise with a random scale value onto raw waveform data.'
     data_noisy = np.empty(data.shape)
     if np.random.uniform(0, rate_thres) < rate and snr >= snr_thres: 
         data_noisy = np.empty((data.shape))
