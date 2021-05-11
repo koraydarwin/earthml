@@ -12,9 +12,7 @@ def test_random():
               data,
               11,
               2,
-              snr_thres = 10,
-              rate_thres = 1,
-              scale_params = {
+              scale_params_main = {
               "low_bound_gauss": 0.01, 
               "up_bound_gauss": 0.15, 
               "scale": 4}
@@ -25,9 +23,7 @@ def test_random():
               data,
               11,
               2,
-              snr_thres = 10,
-              rate_thres = 1,
-              scale_params = {
+              scale_params_main = {
               "low_bound_gauss": 0.01, 
               "up_bound_gauss": 0.15, 
               "scale": 4}
@@ -43,9 +39,7 @@ def test_dimension():
                                 data,
                                 11,
                                 2,
-                                snr_thres = 10,
-                                rate_thres = 1,
-                                scale_params = {
+                                scale_params_main = {
                                 "low_bound_gauss": 0.01, 
                                 "up_bound_gauss": 0.15, 
                                 "scale": 4}).shape
@@ -59,9 +53,7 @@ def test_add_gaus():
               data,
               11,
               2,
-              snr_thres = 10,
-              rate_thres = 1,
-              scale_params = {
+              scale_params_main = {
               "low_bound_gauss": 0.01, 
               "up_bound_gauss": 0.15, 
               "scale": 4})
@@ -75,9 +67,7 @@ def test_mult_exp():
               data,
               11,
               2,
-              snr_thres = 10,
-              rate_thres = 1,
-              scale_params = {
+              scale_params_main = {
               "low_bound_gauss": 0.01, 
               "up_bound_gauss": 0.15, 
               "scale": 4})
@@ -91,9 +81,7 @@ def test_mult_ray():
               data,
               11,
               2,
-              snr_thres = 10,
-              rate_thres = 1,
-              scale_params = {
+              scale_params_main = {
               "low_bound_gauss": 0.01, 
               "up_bound_gauss": 0.15, 
               "scale": 4})
@@ -106,9 +94,7 @@ def test_add_exp():
               data,
               11,
               2,
-              snr_thres = 10,
-              rate_thres = 1,
-              scale_params = {
+              scale_params_main = {
               "low_bound_gauss": 0.01, 
               "up_bound_gauss": 0.15, 
               "scale": 4})
