@@ -12,22 +12,14 @@ def test_random():
               data,
               11,
               2,
-              scale_params_main = {
-              "low_bound_gauss": 0.01, 
-              "up_bound_gauss": 0.15, 
-              "scale": 4}
-              )
+              scale_params_main = {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1})
   
   np.random.seed(3)
   augmented2 = noise_aug("multiplicative_exponential",
               data,
               11,
               2,
-              scale_params_main = {
-              "low_bound_gauss": 0.01, 
-              "up_bound_gauss": 0.15, 
-              "scale": 4}
-              )
+              scale_params_main = {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1})
   
   assert (augmented1 == augmented2).all()
 
@@ -39,10 +31,7 @@ def test_dimension():
                                 data,
                                 11,
                                 2,
-                                scale_params_main = {
-                                "low_bound_gauss": 0.01, 
-                                "up_bound_gauss": 0.15, 
-                                "scale": 4}).shape
+                                scale_params_main = {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1}).shape
     assert raw_data_shape == noisy_data_shape
     
 def test_add_gaus():
@@ -53,10 +42,7 @@ def test_add_gaus():
               data,
               11,
               2,
-              scale_params_main = {
-              "low_bound_gauss": 0.01, 
-              "up_bound_gauss": 0.15, 
-              "scale": 4})
+              scale_params_main = {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1})
     assert not(raw_data == noisy_data).all()
 
 def test_mult_exp():
@@ -67,10 +53,7 @@ def test_mult_exp():
               data,
               11,
               2,
-              scale_params_main = {
-              "low_bound_gauss": 0.01, 
-              "up_bound_gauss": 0.15, 
-              "scale": 4})
+              scale_params_main = {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1})
     assert not(raw_data == noisy_data).all()
     
 def test_mult_ray():
@@ -81,10 +64,7 @@ def test_mult_ray():
               data,
               11,
               2,
-              scale_params_main = {
-              "low_bound_gauss": 0.01, 
-              "up_bound_gauss": 0.15, 
-              "scale": 4})
+              scale_params_main = {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1})
     assert not(raw_data == noisy_data).all()
 
 def test_add_exp():
@@ -94,8 +74,5 @@ def test_add_exp():
               data,
               11,
               2,
-              scale_params_main = {
-              "low_bound_gauss": 0.01, 
-              "up_bound_gauss": 0.15, 
-              "scale": 4})
+              scale_params_main = {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1})
      assert not(raw_data == noisy_data).all()
