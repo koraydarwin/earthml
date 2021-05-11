@@ -110,7 +110,7 @@ def ray_mult_noise(data, snr, rate, snr_thres, scale_params = None):
         data_noisy = data
     return data_noisy   
 
-def exp_add_noise(data, snr, rate, snr_thres, rate_thres, scale_params = {"scale_exp": 4}):
+def exp_add_noise(data, snr, rate, snr_thres, rate_thres, scale_params = None):
     if scale_params is None:
         scale_params = EXPONENTIAL_DEFAULT_SCALE_PARAM
     'Randomly add exponential noise onto waveforms.'
