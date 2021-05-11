@@ -107,3 +107,5 @@ def exp_add_noise(data, snr, rate, scale_params = None):
     else:
         data_noisy = data
     return data_noisy   
+
+  
