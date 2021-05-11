@@ -16,7 +16,7 @@ def noise_aug(noise_type,
     '''
     
     noise_type: str
-       "additive_gaussian" or "multiplicative_exponential", "multiplicative_rayleigh" or "additive_exponential"
+       additive_gaussian or multiplicative_exponential, multiplicative_rayleigh or additive_exponential
     
     data: 
        data which will be augmented.
@@ -40,7 +40,7 @@ def noise_aug(noise_type,
        "up_bound_gauss" which determines upper bound of the interval for standard deviation of additive_gaussian function. 
        It is for additive_gaussian and its default value is 0.15.
        
-       "scale_exp" which is scale value for multiplicative_exponential and additive_exponential function and its default value is 4.
+       "scale_expo" which is scale value for multiplicative_exponential and additive_exponential function and its default value is 4.
        
        "scale_rayleigh" which is scale value for multiplicative_rayleigh function and its default value is 4.
        
@@ -67,8 +67,8 @@ def gauss_add_noise(data, snr, rate, snr_thres, rate_thres, scale_params = None)
             
     'Apply additive Gaussian noise with a random scale variable onto raw waveform data.'
             
-    data_noisy = np.empty((data.shape))
-    if np.random.uniform(0, rate_thres) < rate and all(snr >= snr_thres): 
+    data_noisy = np.empty(data.shape)
+    if np.random.uniform(0, rate_thres) < rate and snr >= snr_thres: 
         data_noisy = np.empty((data.shape))
         data_noisy[:, 0] = data[:,0] + np.random.normal(0, np.random.uniform(scale_params["low_bound_gauss"], 
                                                                              scale_params["up_bound_gauss"])*max(data[:,0]), data.shape[0])
@@ -80,20 +80,17 @@ def gauss_add_noise(data, snr, rate, snr_thres, rate_thres, scale_params = None)
         data_noisy = data
     return data_noisy 
 
-
 EXPONENTIAL_DEFAULT_SCALE_PARAM = {"scale_exp": 4}    
-def expo_mult_noise(data, snr, rate, snr_thres, rate_thres, scale_params = None):
+def exp_mult_noise(data, snr, rate, snr_thres, rate_thres, scale_params = None):
     if scale_params is None:
         scale_params = EXPONENTIAL_DEFAULT_SCALE_PARAM 
-            
     'Apply multiplicative Rayleigh noise with a random scale value onto raw waveform data.'
-            
-    data_noisy = np.empty((data.shape))
+    data_noisy = np.empty(data.shape)
     if np.random.uniform(0, rate_thres) < rate and snr >= snr_thres: 
         data_noisy = np.empty((data.shape))
-        data_noisy[:, 0] = data[:,0] * (1 + np.random.exponential(scale_params["scale_expo"], data.shape[0]))
-        data_noisy[:, 1] = data[:,1] * (1 + np.random.exponential(scale_params["scale_expo"], data.shape[0]))
-        data_noisy[:, 2] = data[:,2] * (1 + np.random.exponential(scale_params["scale_expo"], data.shape[0])) 
+        data_noisy[:, 0] = data[:,0] * (1 + np.random.exponential(scale_params["scale_exp"], data.shape[0]))
+        data_noisy[:, 1] = data[:,1] * (1 + np.random.exponential(scale_params["scale_exp"], data.shape[0]))
+        data_noisy[:, 2] = data[:,2] * (1 + np.random.exponential(scale_params["scale_exp"], data.shape[0])) 
     else:
         data_noisy = data
     return data_noisy   
@@ -102,11 +99,9 @@ RAYLEIGH_DEFAULT_SCALE_PARAM = {"scale_rayleigh": 4}
 def ray_mult_noise(data, snr, rate, snr_thres, scale_params = None):
     if scale_params is None:
         scale_params = RAYLEIGH_DEFAULT_SCALE_PARAM 
-
     'Apply multiplicative Rayleigh noise with a random scale value onto raw waveform data.'
-    
-    data_noisy = np.empty((data.shape))
-    if np.random.uniform(0, rate_thres) < rate and all(snr >= snr_thres): 
+    data_noisy = np.empty(data.shape)
+    if np.random.uniform(0, rate_thres) < rate and snr >= snr_thres: 
         data_noisy = np.empty((data.shape))
         data_noisy[:, 0] = data[:,0] * (1 + np.random.rayleigh(scale_params["scale_rayleigh"], data.shape[0]))
         data_noisy[:, 1] = data[:,1] * (1 + np.random.rayleigh(scale_params["scale_rayleigh"], data.shape[0]))
@@ -115,20 +110,19 @@ def ray_mult_noise(data, snr, rate, snr_thres, scale_params = None):
         data_noisy = data
     return data_noisy   
 
-
-def expo_add_noise(data, snr, rate, snr_thres, rate_thres, scale_params = {"scale_expo": 4}):
-    if scale_params in None:
+def exp_add_noise(data, snr, rate, snr_thres, rate_thres, scale_params = {"scale_exp": 4}):
+    if scale_params is None:
         scale_params = EXPONENTIAL_DEFAULT_SCALE_PARAM
-            
     'Randomly add exponential noise onto waveforms.'
-            
-    data_noisy = np.empty((data.shape))
+    data_noisy = np.empty(data.shape)
     if np.random.uniform(0, rate_thres) < rate and snr >= snr_thres: 
         data_noisy = np.empty((data.shape))
         signs = np.random.choice([-1,1],data.shape[0])
-        data_noisy[:, 0] = data[:, 0] + (signs*np.random.exponential(scale_params["scale_expo"], data.shape[0]))
-        data_noisy[:, 1] = data[:, 1] + (signs*np.random.exponential(scale_params["scale_expo"], data.shape[0]))
-        data_noisy[:, 2] = data[:, 2] + (signs*np.random.exponential(scale_params["scale_expo"], data.shape[0])) 
+        data_noisy[:, 0] = data[:, 0] + (signs*np.random.exponential(scale_params["scale_exp"], data.shape[0]))
+        data_noisy[:, 1] = data[:, 1] + (signs*np.random.exponential(scale_params["scale_exp"], data.shape[0]))
+        data_noisy[:, 2] = data[:, 2] + (signs*np.random.exponential(scale_params["scale_exp"], data.shape[0])) 
     else:
         data_noisy = data
     return data_noisy   
+
+
