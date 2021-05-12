@@ -1,5 +1,5 @@
 import numpy as np
-from noise_aug import noise_aug
+from noise_aug.core import noise_aug
 
 data = np.random.randint(10, size = (4,3))
 
