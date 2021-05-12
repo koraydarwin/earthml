@@ -13,7 +13,7 @@ def noise_aug(noise_type,
        "additive_gaussian" or "multiplicative_exponential", "multiplicative_rayleigh" or "additive_exponential"
     
     data: 
-       data, it can be .hdf5 file or numpy array which will be augmented (for numpy array: it should have three columns.)
+       data, it can be .hdf5 file or numpy array which will be augmented 
        
     snr: float or int
        the ratio of the power of a signal (meaningful or desired input) to the power of noise (meaningless or unwanted input).
