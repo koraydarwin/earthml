@@ -75,8 +75,6 @@ def test_dimension_add_exp():
                         
 def foo():
     raise ValueError("Data did not augmented")
-
-
     
 def test_add_gaus():
     np.random.seed(3)
