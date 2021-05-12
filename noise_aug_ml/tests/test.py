@@ -2,6 +2,8 @@ import numpy as np
 import pytest
 from noise_aug.core import noise_aug
 
+data = np.random.randint(10, size = (4,3))
+
 def doo():
     raise ValueError('Dimension Error')
 
@@ -12,7 +14,7 @@ def test_dimension_add_gauss():
     data1 = np.random.randint(10, size = (5,6))
     noisy_data_shape = noise_aug("additive_gaussian",
                                 data,
-                                5,
+                                11,
                                 2,
                                 {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1}).shape
     if raw_data_shape == noisy_data_shape:
@@ -29,7 +31,7 @@ def test_dimension_mult_exp():
     data1 = np.random.randint(10, size = (5,6))
     noisy_data_shape = noise_aug("multiplicative_exponential",
                                 data,
-                                5,
+                                11,
                                 2,
                                 {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1}).shape
     if raw_data_shape == noisy_data_shape:
@@ -46,7 +48,7 @@ def test_dimension_mult_ray():
     data1 = np.random.randint(10, size = (5,6))
     noisy_data_shape = noise_aug("multiplicative_rayleigh",
                                 data,
-                                5,
+                                11,
                                 2,
                                 {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1}).shape
     if raw_data_shape == noisy_data_shape:
@@ -64,7 +66,7 @@ def test_dimension_add_exp():
     data1 = np.random.randint(10, size = (5,6))
     noisy_data_shape = noise_aug("additive_exponential",
                                 data,
-                                5,
+                                11,
                                 2,
                                 {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1}).shape
     if raw_data_shape == noisy_data_shape:
@@ -81,7 +83,7 @@ def test_add_gaus():
     raw_data = np.random.randint(10, size = (4,3))
     noisy_data = noise_aug("additive_gaussian",
               raw_data,
-              1,
+              11,
               2,
               {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1})
 
