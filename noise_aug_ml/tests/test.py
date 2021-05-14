@@ -19,10 +19,8 @@ def test_dimension_add_gauss():
                                 {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1}).shape
     if raw_data_shape == noisy_data_shape:
         assert raw_data_shape == noisy_data_shape
-        
     else:
         doo()
-
 
 def test_dimension_mult_exp():
     """ Checks whether the dimension of the original data is equal to the augmented data. """
@@ -36,10 +34,8 @@ def test_dimension_mult_exp():
                                 {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1}).shape
     if raw_data_shape == noisy_data_shape:
         assert raw_data_shape == noisy_data_shape
-        
     else:
         doo()
-
 
 def test_dimension_mult_ray():
     """ Checks whether the dimension of the original data is equal to the augmented data. """
@@ -53,11 +49,8 @@ def test_dimension_mult_ray():
                                 {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1}).shape
     if raw_data_shape == noisy_data_shape:
         assert raw_data_shape == noisy_data_shape
-        
     else:
         doo()
-
-
 
 def test_dimension_add_exp():
     """ Checks whether the dimension of the original data is equal to the augmented data. """
@@ -71,7 +64,6 @@ def test_dimension_add_exp():
                                 {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1}).shape
     if raw_data_shape == noisy_data_shape:
         assert raw_data_shape == noisy_data_shape
-        
     else:
         doo()
                         
@@ -89,11 +81,9 @@ def test_add_gaus():
 
     if not(raw_data == noisy_data).all():
         assert not(raw_data == noisy_data).all()
-        
     else:
         foo() 
         
-            
 def test_mult_exp():
     np.random.seed(3)
     raw_data = np.random.randint(10, size = (4,3))
