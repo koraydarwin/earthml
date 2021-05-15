@@ -51,7 +51,7 @@ def noise_aug(noise_type,
     elif noise_type == "additive_exponential":
         noise_augmented = exp_add_noise(data, snr, rate, scale_params = scale_params_main)
     else:
-        raise NameError(noise_type  + " " +  "could not be found, enter valid noise_type")
+        raise ValueError(noise_type  + " " +  "could not be found, enter valid noise_type")
     return noise_augmented
 
 
