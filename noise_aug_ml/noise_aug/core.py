@@ -62,7 +62,7 @@ def gauss_add_noise(data, snr, rate, scale_params = None):
     '''Apply additive Gaussian noise with a random scale variable onto raw waveform data; scale_params = {low_bound_gauss: None, up_bound_gauss: None,"snr_thres":None, "rate_thres":None}'''
     data_noisy = np.empty(data.shape)
     if np.random.uniform(0, scale_params["rate_thres"]) < rate and snr >= scale_params["snr_thres"]: 
-        data_noisy = np.empty((data.shape))
+        data_noisy = np.empty(data.shape)
         for i in range(3):
             data_noisy[:, i] = data[:,i] + np.random.normal(0, np.random.uniform(scale_params["low_bound_gauss"], 
                                                                              scale_params["up_bound_gauss"])*max(data[:,0]), data.shape[0]) 
@@ -77,7 +77,7 @@ def exp_mult_noise(data, snr, rate, scale_params = None):
     '''Apply multiplicative exponential noise with a random scale value onto raw waveform data; scale_params = {scale: None, "snr_thres":None, "rate_thres":None}'''
     data_noisy = np.empty(data.shape)
     if np.random.uniform(0, scale_params["rate_thres"]) < rate and snr >= scale_params["snr_thres"]: 
-        data_noisy = np.empty((data.shape))
+        data_noisy = np.empty(data.shape)
         data_noisy = data * (1 + np.random.exponential(scale_params['scale'], data.shape))
     else:
         data_noisy = data
@@ -89,7 +89,7 @@ def ray_mult_noise(data, snr, rate, scale_params = None):
         scale_params = EXP_AND_RAY_DEFAULT_SCALE_PARAMS 
     data_noisy = np.empty(data.shape)
     if np.random.uniform(0, scale_params["rate_thres"]) < rate and snr >= scale_params["snr_thres"]: 
-        data_noisy = np.empty((data.shape))
+        data_noisy = np.empty(data.shape)
         data_noisy = data * (1 + np.random.rayleigh(scale_params['scale'], data.shape))
     else:
         data_noisy = data
@@ -101,7 +101,7 @@ def exp_add_noise(data, snr, rate, scale_params = None):
     '''Apply additive exponential noise with a random scale variable onto raw waveform data; scale_params = {scale: None}'''
     data_noisy = np.empty(data.shape)
     if np.random.uniform(0, scale_params["rate_thres"]) < rate and snr >= scale_params["snr_thres"]: 
-        data_noisy = np.empty((data.shape))
+        data_noisy = np.empty(data.shape)
         signs = np.random.choice([-1,1],data.shape)
         data_noisy = data + signs * np.random.exponential(scale_params['scale'], data.shape)
     else:
