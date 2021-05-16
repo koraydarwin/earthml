@@ -55,11 +55,11 @@ def noise_aug(noise_type,
     return noise_augmented
 
 
-GAUSS_DEFAULT_SCALE_PARAMS = {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15}          
+GAUSS_DEFAULT_SCALE_PARAMS = {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "snr_thres":10, "rate_thres":1}          
 def gauss_add_noise(data, snr, rate, scale_params = None):
     if scale_params is None:
         scale_params = GAUSS_DEFAULT_SCALE_PARAMS
-    '''Apply additive Gaussian noise with a random scale variable onto raw waveform data; scale_params = {low_bound_gauss: None, up_bound_gauss: None}'''
+    '''Apply additive Gaussian noise with a random scale variable onto raw waveform data; scale_params = {low_bound_gauss: None, up_bound_gauss: None,"snr_thres":None, "rate_thres":None}'''
     data_noisy = np.empty(data.shape)
     if np.random.uniform(0, scale_params["rate_thres"]) < rate and snr >= scale_params["snr_thres"]: 
         data_noisy = np.empty((data.shape))
@@ -70,11 +70,11 @@ def gauss_add_noise(data, snr, rate, scale_params = None):
         data_noisy = data
     return data_noisy 
 
-EXP_AND_RAY_DEFAULT_SCALE_PARAMS = {"scale": 4}    
+EXP_AND_RAY_DEFAULT_SCALE_PARAMS = {"scale": 4, "snr_thres":10, "rate_thres":1}    
 def exp_mult_noise(data, snr, rate, scale_params = None):
     if scale_params is None:
         scale_params = EXP_AND_RAY_DEFAULT_SCALE_PARAMS 
-    '''Apply multiplicative exponential noise with a random scale value onto raw waveform data; scale_params = {scale: None}'''
+    '''Apply multiplicative exponential noise with a random scale value onto raw waveform data; scale_params = {scale: None, "snr_thres":None, "rate_thres":None}'''
     data_noisy = np.empty(data.shape)
     if np.random.uniform(0, scale_params["rate_thres"]) < rate and snr >= scale_params["snr_thres"]: 
         data_noisy = np.empty((data.shape))
