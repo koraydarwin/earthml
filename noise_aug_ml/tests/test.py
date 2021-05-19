@@ -13,7 +13,6 @@ def test_dimension_add_gauss():
                                 11,
                                 2,
                                 {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "snr_thres":10, "rate_thres":1}).shape
-
     assert raw_data_shape == noisy_data_shape
 
 def test_dimension_mult_exp():
