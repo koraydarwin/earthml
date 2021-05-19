@@ -2,125 +2,97 @@ import numpy as np
 import pytest
 from noise_aug.core import noise_aug
 
-data = np.random.randint(10, size = (4,3))
+data = np.array([[2,3,4], [5,6,7], [8,9,10]])
+raw_data_shape = data.shape
 
-def doo():
-    raise ValueError('Dimension Error')
 
 def test_dimension_add_gauss():
     """ Checks whether the dimension of the original data is equal to the augmented data. """
-    
-    raw_data_shape = data.shape
-    data1 = np.random.randint(10, size = (5,6))
     noisy_data_shape = noise_aug("additive_gaussian",
                                 data,
                                 11,
                                 2,
-                                {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1}).shape
-    if raw_data_shape == noisy_data_shape:
-        assert raw_data_shape == noisy_data_shape
-    else:
-        doo()
+                                {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "snr_thres":10, "rate_thres":1}).shape
+
+    assert raw_data_shape == noisy_data_shape
 
 def test_dimension_mult_exp():
     """ Checks whether the dimension of the original data is equal to the augmented data. """
-    
-    raw_data_shape = data.shape
-    data1 = np.random.randint(10, size = (5,6))
     noisy_data_shape = noise_aug("multiplicative_exponential",
                                 data,
                                 11,
                                 2,
-                                {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1}).shape
-    if raw_data_shape == noisy_data_shape:
-        assert raw_data_shape == noisy_data_shape
-    else:
-        doo()
+                                {"scale": 4, "snr_thres":10, "rate_thres":1}).shape
+    assert raw_data_shape == noisy_data_shape
 
 def test_dimension_mult_ray():
     """ Checks whether the dimension of the original data is equal to the augmented data. """
-    
-    raw_data_shape = data.shape
-    data1 = np.random.randint(10, size = (5,6))
     noisy_data_shape = noise_aug("multiplicative_rayleigh",
                                 data,
                                 11,
                                 2,
-                                {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1}).shape
-    if raw_data_shape == noisy_data_shape:
-        assert raw_data_shape == noisy_data_shape
-    else:
-        doo()
+                                {"scale": 4, "snr_thres":10, "rate_thres":1}).shape
+    assert raw_data_shape == noisy_data_shape
 
 def test_dimension_add_exp():
     """ Checks whether the dimension of the original data is equal to the augmented data. """
-    
-    raw_data_shape = data.shape
-    data1 = np.random.randint(10, size = (5,6))
     noisy_data_shape = noise_aug("additive_exponential",
                                 data,
                                 11,
                                 2,
-                                {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1}).shape
-    if raw_data_shape == noisy_data_shape:
-        assert raw_data_shape == noisy_data_shape
-    else:
-        doo()
+                                {"scale": 4, "snr_thres":10, "rate_thres":1}).shape
+    assert raw_data_shape == noisy_data_shape
                         
-def foo():
-    raise ValueError("Data did not augmented")
     
 def test_add_gaus():
-    np.random.seed(3)
-    raw_data = np.random.randint(10, size = (4,3))
     noisy_data = noise_aug("additive_gaussian",
-              raw_data,
+              data,
               11,
               2,
-              {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1})
-
-    if not(raw_data == noisy_data).all():
-        assert not(raw_data == noisy_data).all()
-    else:
-        foo() 
+              {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "snr_thres":10, "rate_thres":1})
+    assert not(data == noisy_data).all()
         
 def test_mult_exp():
-    np.random.seed(3)
-    raw_data = np.random.randint(10, size = (4,3))
     noisy_data = noise_aug("multiplicative_exponential",
-              raw_data,
+              data,
               11,
               2,
-              {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1})
-    if not(raw_data == noisy_data).all():
-        assert not(raw_data == noisy_data).all()
-    else:
-        foo()
+              {"scale": 4, "snr_thres":10, "rate_thres":1})
+    assert not(data == noisy_data).all()
     
 def test_mult_ray():
-    np.random.seed(3)
-    raw_data = np.random.randint(10, size = (4,3))
-    
     noisy_data = noise_aug("multiplicative_rayleigh",
-              raw_data,
+              data,
               11,
               2,
-              {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1})
-    
-    if not(raw_data == noisy_data).all():
-        assert not(raw_data == noisy_data).all()
-    else:
-        foo()
+              {"scale": 4, "snr_thres":10, "rate_thres":1})
+    assert not(data == noisy_data).all()
 
 def test_add_exp():
-    np.random.seed(3)
-    raw_data = np.random.randint(10, size = (4,3))
     noisy_data = noise_aug("additive_exponential",
-              raw_data,
+              data,
               11,
               2,
-              {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "scale": 4, "snr_thres":10, "rate_thres":1})
-    if not(raw_data == noisy_data).all():
-        assert not(raw_data == noisy_data).all()
+              {"scale": 4, "snr_thres":10, "rate_thres":1})
+    assert not(data == noisy_data).all()
+
+
+def check_noise_type(noise_type):
+    noise_lst = ["additive_gaussian", "multiplicative_exponential", "multiplicative_rayleigh", "additive_exponential"]
+    if not(noise_type in noise_lst):
+            raise ValueError("invalid noise_type")
     else:
-        foo()
+        return "it is ok"
+            
+
+def test_add_gaus1():
+    assert check_noise_type("multiplicative_exponential")
+        
+def test_mult_exp1():
+    assert check_noise_type("multiplicative_exponential")
+        
+def test_mult_ray1():
+    assert check_noise_type("multiplicative_rayleigh")
+
+def test_add_exp1():
+    assert check_noise_type("additive_exponential")
