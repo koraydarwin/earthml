@@ -77,7 +77,8 @@ def test_add_exp():
 
 
 def check_noise(noise_type):
-    """Checks whether the given noise_type is valid or not by looking its dimension. If noise_type is invalid, main function will not return data, data will not have shape."""
+    """Checks whether the given noise_type is valid or not by looking its dimension. If noise_type is invalid,
+                                                                                     main function will not return data, data will not have shape."""
     flag = None
     if noise_type == "additive_gaussian":
         noisy_data_shape = noise_aug("additive_gaussian", data, 11, 3).shape
