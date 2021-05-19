@@ -47,9 +47,9 @@ def noise_aug(noise_type,
             raise ValueError("additive_gaussian noise does not use scale parameter")
         elif noise_type == "multiplicative_exponential" and (("low_bound_gauss" in scale_params_main) or ("up_bound_gauss" in scale_params_main)):
             raise ValueError("multiplicative_exponential noise does not use low_bound_gauss or up_bound_gauss parameter")
-        elif noise_type == "multiplicative_rayleigh" and (("low_bound_gauss" or "up_bound_gauss") in scale_params_main):
+        elif noise_type == "multiplicative_rayleigh" and (("low_bound_gauss" in scale_params_main) or ("up_bound_gauss" in scale_params_main)):
             raise ValueError("multiplicative_rayleigh noise does not use low_bound_gauss or up_bound_gauss parameter")
-        elif noise_type == "additive_exponential" and (("low_bound_gauss" or "up_bound_gauss") in scale_params_main):
+        elif noise_type == "additive_exponential" and (("low_bound_gauss" in scale_params_main) or ("up_bound_gauss" in scale_params_main)):
             raise ValueError("additive_exponential noise does not use low_bound_gauss or up_bound_gauss parameter")
         else:
             return scale_params_main
