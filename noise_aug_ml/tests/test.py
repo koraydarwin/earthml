@@ -100,7 +100,7 @@ def check_noise(noise_type):
     return flag
 
 def test_add_gaus1():
-    assert check_noise("additiv_gaussian")
+    assert check_noise("additive_gaussian")
 
 def test_mult_exp1():
     assert check_noise("multiplicative_exponential")
