@@ -40,8 +40,7 @@ def test_dimension_add_exp():
                                 11,
                                 2,
                                 {"scale": 4, "snr_thres":10, "rate_thres":1}).shape
-    assert raw_data_shape == noisy_data_shape
-                        
+    assert raw_data_shape == noisy_data_shape                       
     
 def test_add_gaus():
     noisy_data = noise_aug("additive_gaussian",
@@ -74,7 +73,6 @@ def test_add_exp():
               2,
               {"scale": 4, "snr_thres":10, "rate_thres":1})
     assert not(data == noisy_data).all()
-
 
 def check_noise(noise_type):
     """Checks whether the given noise_type is valid or not by looking its dimension. If noise_type is invalid,
