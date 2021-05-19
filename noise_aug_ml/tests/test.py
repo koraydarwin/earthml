@@ -76,18 +76,29 @@ def test_add_exp():
     assert not(data == noisy_data).all()
 
 
-def test_add_gaus1():
-    with pytest.raises(ValueError):
-        assert noise_aug("additive_gaussian", data, 11, 3)      
-        
-def test_mult_exp1():
-    with pytest.raises(ValueError):
-        assert noise_aug("multiplicative_exponential", data, 11, 3)
-        
-def test_mult_ray1():
-    with pytest.raises(ValueError):
-        assert noise_aug("multiplicative_rayleigh", data, 11, 3)
+def check_noise(noise_type):
+    flag = None
+    if noise_type == "additive_gaussian":
+        flag = True
+    elif noise_type == "multiplicative_exponential":
+        flag = True
+    elif noise_type == "multiplicative_rayleigh":
+        flag = True
+    elif noise_type == "additive_exponential":
+        flag = True
+    else:
+        flag = False
+        raise ValueError("invalid noise_type") 
+    return flag
 
+def test_add_gaus1():
+    assert check_noise("additive_gaussian")
+
+def test_mult_exp1():
+    assert check_noise("multiplicative_exponential")
+    
+def test_mult_ray1():
+    assert check_noise("multiplicative_rayleigh")
+    
 def test_add_exp1():
-    with pytest.raises(ValueError):
-        assert noise_aug("additive_exponential", data, 11, 3)
+    assert check_noise("additive_exponential")
