@@ -89,7 +89,7 @@ def gauss_add_noise(data, scale_params):
              scale_params["low_bound_scale"], 
              scale_params["up_bound_scale"])
         noise = np.random.normal(0, channel_scale * max(data[:,i]), num_samples)
-        data_noisy[:, i] = data[:,i] + noise
+        data_noisy[:,i] = data[:,i] + signs * noise
     return data_noisy
 
 def exp_add_noise(data, scale_params):
@@ -102,8 +102,8 @@ def exp_add_noise(data, scale_params):
         channel_scale = np.random.uniform(
            scale_params["low_bound_scale"],
            scale_params["up_bound_scale"])
-        noise = signs * np.random.exponential(channel_scale * max(data[:,i]), num_samples)
-        data_noisy = data + noise
+        noise = np.random.exponential(channel_scale * max(data[:,i]), num_samples)
+        data_noisy[:,i] = data[:,i] + noise
     return data_noisy
 
 def exp_mult_noise(data, scale_params):
