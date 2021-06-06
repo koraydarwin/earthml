@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-from noise_aug import noise_aug
+from core import noise_aug
 
 RAW_DATA = np.array([[ 2,  3,  4,  5],
                     [ 6,  7,  8,  9],
@@ -32,32 +32,32 @@ NOISE_TYPE2ARGS = {
      "multiplicative_rayleigh"   : MULTIPLICATIVE_NOISE_ARGS}
 
 def test_dimensions():
-     '''check dimensions of noisy data'''
+    '''check dimensions of noisy data'''
     for noise_type, kwargs in NOISE_TYPE2ARGS.items():
         noisy_data = noise_aug(RAW_DATA, noise_type, **kwargs)
         assert RAW_DATA.shape == noisy_data.shape
-
+        
 def test_data_changed():
-     '''make sure all data is modified when rate==1'''
-     # XXX TODO this is a risky test! randomness means we will
-     # sometimes (rarely) have unmodified data despite the code working
-     # properly
+    '''make sure all data is modified when rate==1'''
     for noise_type, kwargs in NOISE_TYPE2ARGS.items():
         noisy_data = noise_aug(RAW_DATA, noise_type, **kwargs)
         assert (RAW_DATA != noisy_data).all()
-
+        
 def test_invalid_noise_type():
-     '''make sure we get an error when we use an undefined error type'''
-        kwargs = NOISE_TYPE2ARGS['additive_exponential']
-        with pytest.raises(AssertionError):
-            noisy_data = noise_aug(RAW_DATA, 'junk_noise', **kwargs)
+    '''make sure we get an error when we use an undefined error type'''
+    kwargs = NOISE_TYPE2ARGS['additive_exponential']
+    with pytest.raises(AssertionError):
+        noisy_data = noise_aug(RAW_DATA, 'junk_noise', **kwargs)
+        
+NON_ADDITIVE_NOISE_TYPE2ARGS = {k: v for k, v in NOISE_TYPE2ARGS.items() 
+                            if k != 'additive_gaussian' or k != 'additive_exponential'}
 
-NON_ADDITIVE_NOISE_TYPE2ARGS = {k: v for k, v in NOISE_TYPE2ARGS.items() if
-                             k != 'additive_gaussian' or k != 'additive_exponential'}
-def test_invalid_scale_args():
-    '''make sure we get an error when we use additive arguments with non-additive
+def test_invalid_scale_args(): 
+    '''make sure we get an error when we use gauss arguments with non-gauss
      noise type'''
     gauss_kwargs = NOISE_TYPE2ARGS['additive_gaussian']
     for noise_type in NON_GAUSS_NOISE_TYPE2ARGS:
         with pytest.raises(ValueError):
-             noisy_data = noise_aug(RAW_DATA, noise_type, **gauss_kwargs)
+            noisy_data = noise_aug(RAW_DATA, noise_type, **gauss_kwargs)
+            
+    
