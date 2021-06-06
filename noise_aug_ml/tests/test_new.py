@@ -50,14 +50,14 @@ def test_invalid_noise_type():
         noisy_data = noise_aug(RAW_DATA, 'junk_noise', **kwargs)
         
 NON_ADDITIVE_NOISE_TYPE2ARGS = {k: v for k, v in NOISE_TYPE2ARGS.items() 
-                            if k != 'additive_gaussian' or k != 'additive_exponential'}
+                            if k != 'additive_gaussian' and k != "additive_exponential"}
 
 def test_invalid_scale_args(): 
-    '''make sure we get an error when we use gauss arguments with non-gauss
+    '''make sure we get an error when we use gauss arguments with non-additive
      noise type'''
-    gauss_kwargs = NOISE_TYPE2ARGS['additive_gaussian']
-    for noise_type in NON_GAUSS_NOISE_TYPE2ARGS:
+    additive_kwargs = NOISE_TYPE2ARGS['additive_gaussian']
+    for noise_type in NON_ADDITIVE_NOISE_TYPE2ARGS:
         with pytest.raises(ValueError):
-            noisy_data = noise_aug(RAW_DATA, noise_type, **gauss_kwargs)
+            noisy_data = noise_aug(RAW_DATA, noise_type, **additive_kwargs)
             
     
