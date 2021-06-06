@@ -9,13 +9,11 @@ NOISE_TYPES = (
 ADDITIVE_NOISE_PARAMS = {
     "up_bound_scale"  : 0.15,
     "low_bound_scale" : 0.01,
-    "snr_thres"       : 10,
-    "rate_thres"      : 1}   
+    "snr_thres"       : 10}   
 
 MULTIPLICATIVE_NOISE_PARAMS = {
     "scale"      : 4,
-    "snr_thres"  : 10,
-    "rate_thres" : 1}
+    "snr_thres"  : 10}
 
 NOISE_TYPE2DEFAULT_PARAMS = {
     "additive_gaussian"           : ADDITIVE_NOISE_PARAMS,
@@ -38,6 +36,7 @@ def noise_aug(data,
         "multiplicative_exponential", "multiplicative_rayleigh"
      data: numpy array 
         data to be augmented, shape: (num_samples, num_channels)
+        .hdf5 data or any numpy array
         
      snr: float or int
         The ratio of mean absolute deviation of signal and the 
