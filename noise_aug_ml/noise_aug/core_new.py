@@ -89,21 +89,21 @@ def gauss_add_noise(data, scale_params):
              scale_params["low_bound_scale"], 
              scale_params["up_bound_scale"])
         noise = np.random.normal(0, channel_scale * max(data[:,i]), num_samples)
-        data_noisy[:,i] = data[:,i] + signs * noise
+        data_noisy[:,i] = data[:,i] + noise
     return data_noisy
 
 def exp_add_noise(data, scale_params):
     '''Apply additive exponential noise with a random scale variable onto
      raw waveform data'''
     data_noisy = np.empty(data.shape)
-    signs = np.random.choice([-1,1], data.shape)
     num_samples, num_channels = data.shape
     for i in range(num_channels):
+        signs = np.random.choice([-1,1], num_samples)
         channel_scale = np.random.uniform(
            scale_params["low_bound_scale"],
            scale_params["up_bound_scale"])
         noise = np.random.exponential(channel_scale * max(data[:,i]), num_samples)
-        data_noisy[:,i] = data[:,i] + noise
+        data_noisy[:,i] = data[:,i] + signs * noise
     return data_noisy
 
 def exp_mult_noise(data, scale_params):
