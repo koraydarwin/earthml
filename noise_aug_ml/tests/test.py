@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-from noise_aug import noise_aug
+from core import noise_aug
 
 RAW_DATA = np.array([[ 2,  3,  4,  5],
                      [ 6,  7,  8,  9],
