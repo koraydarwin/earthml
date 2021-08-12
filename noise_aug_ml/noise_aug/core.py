@@ -1,122 +1,132 @@
 import numpy as np
 
-def noise_aug(noise_type,
-              data,
+NOISE_TYPES = (
+    "additive_gaussian",
+    "additive_exponential", 
+    "multiplicative_exponential",
+    "multiplicative_rayleigh")
+
+ADDITIVE_DEFAULT_PARAMS = {
+    "up_bound_scale"  : 0.15,
+    "low_bound_scale" : 0.01,
+    "snr_thres"       : 10,
+    "rate_thres"      : 1}   
+
+MULTIPLICATIVE_DEFAULT_PARAMS = {
+    "scale"      : 4,
+    "snr_thres"  : 10,
+    "rate_thres" : 1}
+
+NOISE_TYPE2DEFAULT_PARAMS = {
+    "additive_gaussian"           : ADDITIVE_DEFAULT_PARAMS,
+    "additive_exponential"        : ADDITIVE_DEFAULT_PARAMS,
+    "multiplicative_exponential"  : MULTIPLICATIVE_DEFAULT_PARAMS,
+    "multiplicative_rayleigh"     : MULTIPLICATIVE_DEFAULT_PARAMS}
+
+def noise_aug(data,
+              noise_type,
               snr,
               rate,
-              scale_params_main = None):
-     
-    '''
-    
+              scale_params = None):
+    '''Return a noisy version of data for a fraction (`rate`) of the data
+    samples if snr > scale_params['snr_threshold']. For the remaining
+    fraction, return original data unchanged. Also return original
+    data if snr is lower than the threshold.
+    Arguments:
     noise_type: str
-       "additive_gaussian" or "multiplicative_exponential", "multiplicative_rayleigh" or "additive_exponential"
-    
-    data: 
-       data, it can be .hdf5 file or numpy array which will be augmented 
+       One of "additive_gaussian",  "additive_exponential", 
+       "multiplicative_exponential", "multiplicative_rayleigh"
+    data: numpy array 
+       XXX TODO check shape (also:could this be an hdf5 file?)
+       data to be augmented, shape: (num_samples, num_channels)
        
     snr: float or int
-       the ratio of the power of a signal (meaningful or desired input) to the power of noise (meaningless or unwanted input).
+       the ratio of the power of a signal (meaningful or desired input) to the
+       power of noise (meaningless or unwanted input).
+       XXX TODO clarify meaning
        
     rate: float or int
        rate of augmentation
+       XXX TODO clarify meaning
     
-    rate_thres: float or int
-       rate threshold to be augmented     
-       
     snr_thres: float or int
        signal to noise threshold to be augmented.
+       XXX TODO clafify meaning
        
-    scale_params_main: dict (optional) {"low_bound_gauss": None, "up_bound_gauss": None, "scale": None, "snr_thres": None, "rate_thres":1}
-       "low_bound_gauss" which determines lower bound of the interval for standard deviation of additive_gaussian function. 
-       It is for additive_gaussian and its default value is 0.01.
-       
-       "up_bound_gauss" which determines upper bound of the interval for standard deviation of additive_gaussian function. 
-       It is for additive_gaussian and its default value is 0.15.
-       
-       "scale" which is scale value for "multiplicative_exponential", "multiplicative_rayleigh" and "additive_exponential" functions and its default value is 4.
-       
-       "snr_thres" which is threshold value for be augmented; its default value is 10. If it is greater than 10, it will be augmented.
-       
-       "rate_thres" which is threshold value for be augmented; its default value is 1. If it is greater than 1, it will be augmented.
-       
-       
+    scale_params: dict (optional) 
+       sets scale parameters for the type of noise to be used. possible keys:
+       "low_bound_scale", "up_bound_scale", "scale", "snr_thres"
+       XXX TODO snr_thres is not really a "scale parameter"
+    Returns:
+    NumPy array with the shape of the original data argument.
     '''
-    
-    def check_options(noise_type):
-        if noise_type == "additive_gaussian" and "scale" in scale_params_main:
-            raise ValueError("additive_gaussian noise does not use scale parameter")
-        elif noise_type == "multiplicative_exponential" and (("low_bound_gauss" in scale_params_main) or ("up_bound_gauss" in scale_params_main)):
-            raise ValueError("multiplicative_exponential noise does not use low_bound_gauss or up_bound_gauss parameter")
-        elif noise_type == "multiplicative_rayleigh" and (("low_bound_gauss" in scale_params_main) or ("up_bound_gauss" in scale_params_main)):
-            raise ValueError("multiplicative_rayleigh noise does not use low_bound_gauss or up_bound_gauss parameter")
-        elif noise_type == "additive_exponential" and (("low_bound_gauss" in scale_params_main) or ("up_bound_gauss" in scale_params_main)):
-            raise ValueError("additive_exponential noise does not use low_bound_gauss or up_bound_gauss parameter")
-        else:
-            return scale_params_main
-            
-    def _set_default_params(noise_type):
-        if noise_type == "additive_gaussian":
-            scale_params_main = {"low_bound_gauss": 0.01, "up_bound_gauss": 0.15, "snr_thres":10, "rate_thres":1}   
-        elif noise_type == "multiplicative_exponential":
-            scale_params_main = {"scale":4, "snr_thres":10, "rate_thres":1}
-        elif noise_type == "multiplicative_rayleigh":
-            scale_params_main = {"scale":4, "snr_thres":10, "rate_thres":1}
-        elif noise_type == "additive_exponential":
-            scale_params_main = {"scale":4, "snr_thres":10, "rate_thres":1}
-        else:
-            raise ValueError(noise_type  + " " +  "could not be found, enter valid noise_type")
-        return scale_params_main
-           
-    
-    if scale_params_main is None:
-        scale_params_main = _set_default_params(noise_type)
-    else:
-        scale_params_main = check_options(noise_type)
-        
-        
-    if np.random.uniform(0, scale_params_main["rate_thres"]) < rate and snr >= scale_params_main["snr_thres"]: 
-            if noise_type == "additive_gaussian":
-                noise_augmented = gauss_add_noise(data, snr, rate, scale_params = scale_params_main)
-            elif noise_type == "multiplicative_exponential":
-                noise_augmented = exp_mult_noise(data, snr, rate, scale_params = scale_params_main)
-            elif noise_type == "multiplicative_rayleigh":
-                noise_augmented = ray_mult_noise(data, snr, rate, scale_params = scale_params_main)
-            elif noise_type == "additive_exponential":
-                noise_augmented = exp_add_noise(data, snr, rate, scale_params = scale_params_main)
-            else:
-                raise ValueError(noise_type  + " " +  "could not be found, enter valid noise_type")
+    assert noise_type in NOISE_TYPES
+    if scale_params is None:
+        scale_params = NOISE_TYPE2DEFAULT_PARAMS[noise_type]
+    _check_options(noise_type, scale_params)
+
+    if np.random.uniform(0, 1) < rate and snr >= scale_params["snr_thres"]: 
+        noise_func = NOISE_TYPE2FUNC[noise_type]
+        noise_augmented = noise_func(data = data, scale_params = scale_params)
     else:
         noise_augmented = data
     return noise_augmented
                  
-def gauss_add_noise(data, snr, rate, scale_params = None):
-    '''Apply additive Gaussian noise with a random scale variable onto raw waveform data; scale_params = 
-                                                          {low_bound_gauss: None, up_bound_gauss: None,"snr_thres":None, "rate_thres":None}'''
+def _check_options(noise_type, scale_params_main):
+    assert noise_type in NOISE_TYPES
+    if noise_type == "additive_gaussian" or noise_type == "additive_exponential":
+        if "scale" in scale_params_main:
+            raise ValueError("additive_gaussian does not use scale")
+    elif (("low_bound_scale" in scale_params_main) or
+          ("up_bound_scale" in scale_params_main)):
+        raise ValueError(
+            "%s does not use low_bound_scale or up_bound_scale" % noise_type)
+
+def gauss_add_noise(data, scale_params):
+    '''Apply additive Gaussian noise with a random scale variable onto 
+    raw waveform data'''
     data_noisy = np.empty(data.shape)
-    num_chan = data.shape[1]
-    for i in range(num_chan):
-        data_noisy[:, i] = data[:,i] + np.random.normal(0, np.random.uniform(scale_params["low_bound_gauss"], 
-                                                                             scale_params["up_bound_gauss"])*max(data[:,i]), data.shape[0]) 
+    num_samples, num_channels = data.shape
+    for i in range(num_channels):
+        channel_scale = np.random.uniform(
+            scale_params["low_bound_scale"], 
+            scale_params["up_bound_scale"])
+        noise = np.random.normal(0, channel_scale * max(data[:,i]), num_samples)
+        data_noisy[:, i] = data[:,i] + noise
+    return data_noisy 
+
+def exp_add_noise(data, scale_params):
+    '''Apply additive exponential noise with a random scale variable onto
+    raw waveform data'''
+    data_noisy = np.empty(data.shape)
+    num_samples, num_channels = data.shape
+    signs = np.random.choice([-1,1], data.shape)
+    for i in range(num_channels):
+        channel_scale = np.random.uniform(
+            scale_params["low_bound_scale"], 
+            scale_params["up_bound_scale"])
+        noise = signs[:,i] * np.random.exponential(channel_scale * max(data[:,i]), num_samples)
+        data_noisy[:, i] = data[:,i] + noise
     return data_noisy 
    
-def exp_mult_noise(data, snr, rate, scale_params = None):
-    '''Apply multiplicative exponential noise with a random scale value onto raw waveform data; scale_params = 
-                                                                         {scale: None, "snr_thres":None, "rate_thres":None}'''
+def exp_mult_noise(data, scale_params):
+    '''Apply multiplicative exponential noise with a scale value determined by
+    scale_params['scale'] onto raw waveform data'''
     data_noisy = np.empty(data.shape)
-    data_noisy = data * (1 + np.random.exponential(scale_params['scale'], data.shape))
+    noise_fac = 1 + np.random.exponential(scale_params['scale'], data.shape)
+    data_noisy = data * noise_fac
     return data_noisy   
 
-def ray_mult_noise(data, snr, rate, scale_params = None):
-    '''Apply multiplicative Rayleigh noise with a random scale value onto raw waveform data; scale_params = 
-                                                                         {scale: None, "snr_thres":None, "rate_thres":None}'''
+def ray_mult_noise(data, scale_params):
+    '''Apply multiplicative Rayleigh noise with a scale value determined by
+    scale_params['scale'] onto raw waveform data'''
     data_noisy = np.empty(data.shape)
-    data_noisy = data * (1 + np.random.rayleigh(scale_params['scale'], data.shape))
-    return data_noisy   
+    noise_fac = 1 + np.random.rayleigh(scale_params['scale'], data.shape)
+    data_noisy = data * noise_fac
+    return data_noisy
 
-def exp_add_noise(data, snr, rate, scale_params = None):
-    '''Apply additive exponential noise with a random scale variable onto raw waveform data; scale_params = 
-                                                                         {scale: None, "snr_thres":None, "rate_thres":None}'''
-    data_noisy = np.empty(data.shape)
-    signs = np.random.choice([-1,1],data.shape)
-    data_noisy = data + signs * np.random.exponential(scale_params['scale'], data.shape)
-    return data_noisy   
+NOISE_TYPE2FUNC = {
+    'additive_gaussian'          : gauss_add_noise,
+    "additive_exponential"       : exp_add_noise,
+    "multiplicative_exponential" : exp_mult_noise,
+    "multiplicative_rayleigh"    : ray_mult_noise}
