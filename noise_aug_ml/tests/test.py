@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-from core import noise_aug
+from noise_aug import noise_aug
 
 RAW_DATA = np.array([[ 2,  3,  4,  5],
                      [ 6,  7,  8,  9],
@@ -28,6 +28,7 @@ MULTIPLICATIVE_ARGS = {
 NOISE_TYPE2ARGS = {
     "additive_gaussian"         : ADDITIVE_ARGS,
     "additive_exponential"      : ADDITIVE_ARGS,
+    "additive_rayleigh"         : ADDITIVE_ARGS,
     "multiplicative_exponential": MULTIPLICATIVE_ARGS,
     "multiplicative_rayleigh"   : MULTIPLICATIVE_ARGS}
 
@@ -52,8 +53,8 @@ def test_invalid_noise_type():
     with pytest.raises(AssertionError):
         noisy_data = noise_aug(RAW_DATA, 'junk_noise', **kwargs)
 
-MULTIPLICATIVE_NOISE_TYPE2ARGS = {k: v for k, v in NOISE_TYPE2ARGS.items() if
-                            k != 'additive_gaussian' or k != 'additive_exponential'}
+MULTIPLICATIVE_NOISE_TYPE2ARGS = {k: v for k, v in NOISE_TYPE2ARGS.items() 
+                  if k in ['multiplicative_exponential', 'multiplicative_rayleigh']}
 def test_invalid_scale_args():
     '''make sure we get an error when we use additive noise arguments with multiplicative
     noise type'''
