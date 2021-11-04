@@ -67,6 +67,10 @@
 
 - In the previous works, this process is done with a Python package, which is called TSFresh (Christ et al. 2018). This package is created in order to reduce time consumption for extracting features of data, especially for large data. It can extract various features like absolute maximum, Fourier entropy, skewness, standard deviation and so forth, it can extract 794 time series features. We can also arrange the features that will be extracted by specifying parameters. Also, for large datasets, TSFresh uses  Python’s “multiprocessing” function underhood; we can distribute the feature extraction to multiple cores.
 
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/exo.png">
+
+- *Samples of raw TESS and feature extracted TESS light curve data.*
+
 
 ### 3.2 Training Dataset 
 
