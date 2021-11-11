@@ -98,17 +98,17 @@
 
 - Recently, creating fake data by using machine learning, via GANs (Goodfellow et al. 2014), has become common, e.g. creating fake face images. In our noise augmentation method, we also create noise using GANs. 
 
-$$ p(x) = \frac{1}{\sqrt{2\pi \sigma^2}} e^{\frac{-(x-\mu)^2}{2 \sigma^2}}$$
+<img src="https://render.githubusercontent.com/render/math?math=p(x) = \frac{1}{\sqrt{2\pi \sigma^2}} e^{\frac{-(x-\mu)^2}{2 \sigma^2}}">
 
-  - *Gaussian Distribution Function $\mu$ is the mean $\sigma$ is the standard deviation*
+  - *Gaussian Distribution Function <img src="https://render.githubusercontent.com/render/math?math=\mu"> is the mean <img src="https://render.githubusercontent.com/render/math?math=\sigma"> is the standard deviation*
+
+<img src="https://render.githubusercontent.com/render/math?math=f(x; \frac{1}{\beta}) = \frac{1}{\beta}e^{\frac{-x}{\beta}}">
+
+  - *Exponential Distribution Function <img src="https://render.githubusercontent.com/render/math?math=\beta"> is the scale value*
   
-$$ f(x; \frac{1}{\beta}) = \frac{1}{\beta}e^{\frac{-x}{\beta}}$$
+<img src="https://render.githubusercontent.com/render/math?math=P(x; \sigma) = \frac{x}{\sigma^2}e^{\frac{-x^2}{2\sigma^2}}">
 
-  - *Exponential Distribution Function $\beta$ is the scale value*
-  
-$$ P(x; \sigma) = \frac{x}{\sigma^2}e^{\frac{-x^2}{2\sigma^2}}$$
-
-  - *Rayleigh Distribution Function, $\sigma$ is the scale value*
+  - *Rayleigh Distribution Function, <img src="https://render.githubusercontent.com/render/math?math=\sigma"> is the scale value*
 
 
 
