@@ -53,7 +53,8 @@
 
 - It contains information about time, the brightness (aperture photometry flux) and its error, moment-derived row/column centroid and their errors, aperture photometry flux after pre-search data conditioning and its error, column/row position correction based on bright stars, and finally, PSF (Probabilistic Spectrum Fitting) -fitted column/row centroid position correction based on bright stars. The unit of the data that is with flux is is e/s and the rest is in pixels. All of this information is located in “fits” light curve data format column by column. 
 
-- According to these columns, we need to extract time domain features. In the previous works that are done with machine learning, Time Series Feature extraction based on scalable hypothesis tests (TSFresh) (Christ et al. 2018) is used. This process contains commonly used techniques such as Fourier Transform, resampling (with 1 hour interval), interpolation if the data is not complete and scaling. Once the time domain light curve data is extracted, we can start the machine learning stage.
+- According to these columns, we need to extract time domain features, and for training phase we will use the flux and time columns, like done in the previous works. But, there is another method that is used which is Time Series Feature extraction based on scalable hypothesis tests (TSFresh) (Christ et al. 2018). According to this method, they firstly extract the flux and time columns, then extracted some time domain data properties, like absolute energy. And, with this method they got better results compared to the previous works that TSFresh package was not used (A. Malik et al. 2021). This feature extraction process contains commonly used techniques such as Fourier Transform, resampling (with 1 hour interval), interpolation if the data is not complete and scaling.
+
 
 
 
@@ -63,13 +64,13 @@
 
 ### 3.1 Extraction of Features from Light Curve Data
 
-- As said earlier in the second section, light curve data consists of information about photometry flux, moment derived centroid and so forth. But, we cannot use this data directly in the machine learning phase. Thus, we should calculate some measures according to raw light curve data in order to “extract” the features of the data, such as absolute energy of the raw light curve data. With these features, we need to create an array whose indexes are these features. (Also, after the extraction of feature process, another preprocessing can be done, removing redundant features from the array.)
+- In the previous works, as said earlier, from light curve data, only flux and time data are extracted, and the machine learning  this process is done with a Python package, which is called TSFresh (Christ et al. 2018). This package is created in order to reduce time consumption for extracting features of data, especially for large data. It can extract various features like absolute maximum, Fourier entropy, skewness, standard deviation and so forth, it can extract 794 time series features. We can also arrange the features that will be extracted by specifying parameters. Also, for large datasets, TSFresh uses  Python’s “multiprocessing” function underhood; we can distribute the feature extraction to multiple cores.
 
-- In the previous works, this process is done with a Python package, which is called TSFresh (Christ et al. 2018). This package is created in order to reduce time consumption for extracting features of data, especially for large data. It can extract various features like absolute maximum, Fourier entropy, skewness, standard deviation and so forth, it can extract 794 time series features. We can also arrange the features that will be extracted by specifying parameters. Also, for large datasets, TSFresh uses  Python’s “multiprocessing” function underhood; we can distribute the feature extraction to multiple cores.
 
 <img src="https://github.com/koraydarwin/earthml/blob/master/img/exo.png">
 
 - *Samples of raw TESS and feature extracted TESS light curve data.*
+
 
 
 ### 3.2 Training Dataset 
@@ -97,17 +98,40 @@
 
 - Recently, creating fake data by using machine learning, via GANs (Goodfellow et al. 2014), has become common, e.g. creating fake face images. In our noise augmentation method, we also create noise using GANs. 
 
+$$ p(x) = \frac{1}{\sqrt{2\pi \sigma^2}} e^{\frac{-(x-\mu)^2}{2 \sigma^2}}$$
+
+  - *Gaussian Distribution Function $\mu$ is the mean $\sigma$ is the standard deviation*
+  
+$$ f(x; \frac{1}{\beta}) = \frac{1}{\beta}e^{\frac{-x}{\beta}}$$
+
+  - *Exponential Distribution Function $\beta$ is the scale value*
+  
+$$ P(x; \sigma) = \frac{x}{\sigma^2}e^{\frac{-x^2}{2\sigma^2}}$$
+
+  - *Rayleigh Distribution Function, $\sigma$ is the scale value*
+
+
+
 
 ### 4.1  Introduction to Noise Augmentation with Previous Works
 
 ### 4.2  Probability Distribution Functions
 
-- In statistics, a probability density function is defined as whose value at any given point in the point space can be interpreted as providing a relative likelihood that the value of the random variable would be close to that sample. The main usage of a probability distribution function is calculating the probability of a given point that is between a specified interval, in other words calculating the integral of the function with the bounds (our interval). If we let the bounds as $ - \inf $ and $ \inf $ our integral should be equal to 1. This was for the continuous case, but if our probability density function is discrete, we need to sum up the probabilities of a given point that is located between an interval, similarly the result will be again 1. 
+- In statistics, a probability density function is defined as whose value at any given point in the point space can be interpreted as providing a relative likelihood that the value of the random variable would be close to that sample, simply, a probability distribution function that gives the probabilities of occurrence of different possible outcomes for an experiment. And, they can be classified in two classes which are discrete probability distribution and continuous probability distribution.
 
-- And, there are different distribution functions with different properties, discrete or continuous, symmetric or non-symmetric and so forth. Gaussian (continuous and symmetric),  Rayleigh (continuous), Bernoulli (discrete), Poisson (discrete) distributions can be given as examples.
+- From the definition, if the outcome of our experiment is dicrete, in other words, if we cannot have any value between the outcomes, then the counts of the events are discrete functions. Binomial distribution, Poisson distribution can be given as examples. But, if the outcome of our experiment may be observed between an interval, not only the bounds of the experiment, then the events are continuous function, and these functions are also known as probability density functions (PDF). Gaussian distribution, exponential distribution can be given as examples. The sum of the probabilities in continuous distribution function is one, the integral of the function with the bounds as $ - \infty $ and $ \infty $ is one.
+
+- Python's NumPy package also has the property of random number generator with its "random" function according to the probability distribution function that we specified. Our approach is using that NumPy function, and generate random number, in our case these random numbers are "noise", with only continuous distribution functions (Gaussian, Rayleight and exponential). And, augmenting the light curve data with that noise with additive approach or multiplicative approach.
 
 
 ### 4.3 GANs
+
+- Machine learning has been improving as time passes away, it has been used in many areas from science to economics. We solved prediction and classifying problems. We also created new data from a training dataset, Autoencoders and Variational Autoencoders, actually for a data analysis technique which is called “denoising”. But, in 2014, a new type of machine learning concept was designed which is called “General Adversarial Networks”, shortly GANs, by Ian Goodfellow. For any given training set, this method learns to generate new data with the same statistics as the training set. We have seen fake face photos everywhere, in this example GANs are used.
+
+- GANs have mainly two components which are called “generator” and “discriminator”, both are classical deep learning models, but the main difference is that they are trained simultaneously by adversarial process. Generator model produces new data from a seed, i.e. random noise, by upsampling until we get the dimension that we want. And, the discriminator classifies the produced new data is whether fake or real. Discriminator will give negative output for fake data and positive output for real data. Until the losses of both discriminator and generator decays to some equilibrium point, the training process will continue.
+
+- For its applications, it has been used for fashion, art and science, modeling the distribution of dark matter in a particular direction; fake faces are the most common one. Our approach is creating noise from noise, our training set will be noise instead of a fake image data. And, we will augment our light curve data with the noise that is produced by the output of our GAN models.
+
 
 
 
