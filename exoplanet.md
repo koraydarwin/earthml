@@ -98,15 +98,17 @@
 
 - Recently, creating fake data by using machine learning, via GANs (Goodfellow et al. 2014), has become common, e.g. creating fake face images. In our noise augmentation method, we also create noise using GANs. 
 
+
+
 <img src="https://render.githubusercontent.com/render/math?math=p(x) = \frac{1}{\sqrt{2\pi \sigma^2}} e^{\frac{-(x-\mu)^2}{2 \sigma^2}}">
 
   - *Gaussian Distribution Function <img src="https://render.githubusercontent.com/render/math?math=\mu"> is the mean <img src="https://render.githubusercontent.com/render/math?math=\sigma"> is the standard deviation*
 
-<img src="https://render.githubusercontent.com/render/math?math=f(x; \frac{1}{\beta}) = \frac{1}{\beta}e^{\frac{-x}{\beta}}">
+<img src="https://render.githubusercontent.com/render/math?math=f(x, \frac{1}{\beta}) = \frac{1}{\beta} e^{\frac{-x}{\beta}}">
 
   - *Exponential Distribution Function <img src="https://render.githubusercontent.com/render/math?math=\beta"> is the scale value*
-  
-<img src="https://render.githubusercontent.com/render/math?math=P(x; \sigma) = \frac{x}{\sigma^2}e^{\frac{-x^2}{2\sigma^2}}">
+
+<img src="https://render.githubusercontent.com/render/math?math=P(x, \sigma) = \frac{x}{\sigma^2} e^{\frac{-x^2}{2\sigma^2}}">
 
   - *Rayleigh Distribution Function, <img src="https://render.githubusercontent.com/render/math?math=\sigma"> is the scale value*
 
@@ -119,7 +121,7 @@
 
 - In statistics, a probability density function is defined as whose value at any given point in the point space can be interpreted as providing a relative likelihood that the value of the random variable would be close to that sample, simply, a probability distribution function that gives the probabilities of occurrence of different possible outcomes for an experiment. And, they can be classified in two classes which are discrete probability distribution and continuous probability distribution.
 
-- From the definition, if the outcome of our experiment is dicrete, in other words, if we cannot have any value between the outcomes, then the counts of the events are discrete functions. Binomial distribution, Poisson distribution can be given as examples. But, if the outcome of our experiment may be observed between an interval, not only the bounds of the experiment, then the events are continuous function, and these functions are also known as probability density functions (PDF). Gaussian distribution, exponential distribution can be given as examples. The sum of the probabilities in continuous distribution function is one, the integral of the function with the bounds as $ - \infty $ and $ \infty $ is one.
+- From the definition, if the outcome of our experiment is dicrete, in other words, if we cannot have any value between the outcomes, then the counts of the events are discrete functions. Binomial distribution, Poisson distribution can be given as examples. But, if the outcome of our experiment may be observed between an interval, not only the bounds of the experiment, then the events are continuous function, and these functions are also known as probability density functions (PDF). Gaussian distribution, exponential distribution can be given as examples. The sum of the probabilities in continuous distribution function is one, the integral of the function with the bounds as <img src="https://render.githubusercontent.com/render/math?math=-\infty"> and <img src="https://render.githubusercontent.com/render/math?math=\infty"> is one.
 
 - Python's NumPy package also has the property of random number generator with its "random" function according to the probability distribution function that we specified. Our approach is using that NumPy function, and generate random number, in our case these random numbers are "noise", with only continuous distribution functions (Gaussian, Rayleight and exponential). And, augmenting the light curve data with that noise with additive approach or multiplicative approach.
 
