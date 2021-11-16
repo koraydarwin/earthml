@@ -152,7 +152,17 @@
 
 ## 5.1 Experiments (--- Draft ---)
 
-- 
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/exp1.png">
+
+- *The schematic version of the first model that we used (97% accuracy & 0% recall)*
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/exp2.png">
+
+- *The schematic version of the second model that we used (97% accuracy & 0% recall)*
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/exp3.png">
+
+- *The schematic version of the third model that we used (Similar to the previous work's model) (97% accuracy & 0% recall)*
 
 
 
