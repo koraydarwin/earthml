@@ -64,12 +64,19 @@
 
 ### 3.1 Extraction of Features from Light Curve Data
 
-- In the previous works, as said earlier, from light curve data, only flux and time data are extracted, and the machine learning  this process is done with a Python package, which is called TSFresh (Christ et al. 2018). This package is created in order to reduce time consumption for extracting features of data, especially for large data. It can extract various features like absolute maximum, Fourier entropy, skewness, standard deviation and so forth, it can extract 794 time series features. We can also arrange the features that will be extracted by specifying parameters. Also, for large datasets, TSFresh uses  Python’s “multiprocessing” function underhood; we can distribute the feature extraction to multiple cores.
+- In the previous works, as said earlier, from light curve data, only flux and time data are extracted, and the machine learning  this process is done with a Python package, which is called TSFresh (Christ et al. 2018). This package is created in order to reduce time consumption for extracting features of data, especially for large data. It can extract various features like absolute maximum, Fourier entropy, skewness, standard deviation and so forth, it can extract 794 time series features. We can also arrange the features that will be extracted by specifying parameters. Also, for large datasets, TSFresh uses  Python’s “multiprocessing” function underhood; we can distribute the feature extraction to multiple cores. And the fallowings can be extracted from any time series data by using TSFresh. 
+
+   - Absolute Energy 
+   - Autocorrelation
+   - Continuous Wavelet Transform Coefficients
+   - Fourier Entropy 
+   - Permutation Entropy
+   - Time Reversal Asymmetry Statistic
 
 
 <img src="https://github.com/koraydarwin/earthml/blob/master/img/tess_collage.png">
 
-- *Samples of raw TESS and feature extracted TESS light curve data.*
+- *Samples of raw TESS and feature extracted (with respect to absolute value energy) TESS light curve data.*
 
 
 
@@ -136,14 +143,9 @@
 
 - In out case, we produced noise by using the "noise" data in the training light curve data, which are labeled as "0". To do we upsampled the training dataset in generator part, with Conv2D's Transpose, and the discriminator evaulated the generated data whether it is fake or not, with Conv2D. After the training phase, noise creation via GANs, we get the noise that can be added to the training dataset with appropriate dimensions.
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/gene.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/GAN.png">
 
-- *The schematic version of the Generator model.*
-
-
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/discr.png">
-
-- *The schematic version of the Discriminator model.*
+- *The schematic version of the Generator (left) and the Discriminator (right) models.*
 
 
 ## 5 RESULTS
@@ -152,17 +154,11 @@
 
 ## 5.1 Experiments (--- Draft ---)
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/exp1.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/models.png">
 
-- *The schematic version of the first model that we used (97% accuracy & 0% recall)*
+- *In all of these models (created with Tensorflow layers), we got 97% accuracy, 0% recall.
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/exp2.png">
 
-- *The schematic version of the second model that we used (97% accuracy & 0% recall)*
-
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/exp3.png">
-
-- *The schematic version of the third model that we used (Similar to the previous work's model) (97% accuracy & 0% recall)*
 
 
 
