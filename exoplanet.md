@@ -156,7 +156,7 @@
 
 <img src="https://github.com/koraydarwin/earthml/blob/master/img/models.png">
 
-- *In all of these models (created with Tensorflow layers), we got 97% accuracy, 0% recall.
+- *In all of these models (created with Tensorflow layers), we got 97% accuracy, 0% recall.*
 
 
 
