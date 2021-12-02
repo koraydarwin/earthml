@@ -96,6 +96,13 @@
 - In this work (A. Malik et al. 2021), they procured K2 photometry data from the Mikulski Archive for Space Telescopes (MAST). And, they followed some proprocess procedures for light curve training dataset, and for the labeled training dataset. For the Machine Learning part, again PC” is counted “1” and the rest “0” regardless what the data point is. 3,937 data points belong to planet candidate out of 7873 data points. For the training process, 90% of the data is used, the rest is used for validation.
 
 
+- In the previous works, (Shallue & Vanderburg, 2018) & (Yu et al. 2019) they trained the deep learning model with two different inputs by separating, binning, the light curve data. These are called "local view" and "global view", a local view shows the shape of the transit in detail in other words it is a close-up of the transit event, spanning no more than two transit durations on either side of the transit midpoint; and a global view shows the characteristics of the light curve over an entire orbital period. For the Kepler data, its period can converge to 4 years since its period may be too long, they grouped their phase-folded light curves into 2001 bins for the global view, and 201 bins for the local view. But, for the TESS data, since its period is around 27 days they grouped their phase folded light curves into 201 bins for the global view, and 61 bins for the local view.
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/glob_loc.png">
+
+- *Samples of local and global views, PC: Planet Candidate; EB: Eclipsary Binary.*
+
+
 
 ## 4 OUR METHOD (NOISE AUGMENTATION)
 
@@ -145,20 +152,50 @@
 
 - In out case, we produced noise by using the "noise" data in the training light curve data, which are labeled as "0". To do we upsampled the training dataset in generator part, with Conv2D's Transpose, and the discriminator evaulated the generated data whether it is fake or not, with Conv2D. After the training phase, noise creation via GANs, we get the noise that can be added to the training dataset with appropriate dimensions.
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/GAN.png">
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/generator.png">
 
-- *The schematic version of the Generator (left) and the Discriminator (right) models.*
+- *The schematic version of the Generator.*
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/discriminator.png">
+
+- *The schematic version of the Discriminator.*
 
 
 ## 5 RESULTS
 
 - In the previous work that is done with TESS light curve data (Yu et al. 2019), they used Conv1D and simple Dense layers as a deep learning model, and they got 97.4% accuracy and 65% presicion in Triage mode, it classifies whether the data is an exoplanet or not, in Vetting mode, it classifies whether the data is an exoplanet or an eclipsing binaries or not, 97.8%. After this work, there is another work that uses gradient boosted tree (GBT) model via XGBoost package, which ensures us better results, 84% presicion. In these works, there is no data augmentation process, adding noise. In our approach, we firstly added two types of noises to TESS training dataset, noise that is created by GANs and noise which is the output of classical probability distribution functions. Secondly, we extracted the features from the noise augmented data. Finally, we tried various deep learning models that is produced by two packages which are Tensorflow and XGBoost. 
 
-## 5.1 Experiments (--- Draft ---)
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/models.png">
+### 5.1 Architecture of the Previous Works
+
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/original_yu.png">
+
+- *In this model, for the first input (i.e. global view) the number of the first One Dimensional Convolutional Neural Networks' filter size is 16 with 2 filter factor, 2 block size, 5 kernel size, 5 pooling size, 2 pool strides. For the second input (i.e. local view) the number of the first One Dimensional Convolutional Neural Networks' filter size is 16 with 2 filter factor, 2 block size, 5 kernel size, 7 pooling size, 2 pool strides.*
+
+
+### 5.1 Experiments (--- Draft ---)
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/mod1.png">
+
+- *First architecture.*
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/mod2.png">
+
+- *Second architecture.*
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/mod3.png">
+
+- *Third architecture.*
+- 
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/mod4.png">
+
+- *Fourth architecture.*
 
 - *In all of these models (created with Tensorflow layers), we got 97% accuracy, 0% recall.*
+
+
+
 
 
 
