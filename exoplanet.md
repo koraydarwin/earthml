@@ -150,7 +150,7 @@
 
 - For its applications, it has been used for fashion, art and science, modeling the distribution of dark matter in a particular direction; fake faces are the most common one. Our approach is creating noise from noise, our training set will be noise instead of a fake image data. And, we will augment our light curve data with the noise that is produced by the output of our GAN models.
 
-- In out case, we produced noise by using the "noise" data in the training light curve data, which are labeled as "0". To do we upsampled the training dataset in generator part, with Conv2D's Transpose, and the discriminator evaulated the generated data whether it is fake or not, with Conv2D. After the training phase, noise creation via GANs, we get the noise that can be added to the training dataset with appropriate dimensions.
+- In out case, we produced noise by using the "noise" data in the training light curve data, which are labeled as "0". To do we upsampled the training dataset in generator part, with Conv1D's Transpose, and the discriminator evaulated the generated data whether it is fake or not, with Conv1D. After the training phase, noise creation via GANs, we get the noise that can be added to the training dataset with appropriate dimensions.
 
 <img src="https://github.com/koraydarwin/earthml/blob/master/img/generator.png">
 
