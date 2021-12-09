@@ -84,12 +84,12 @@
 
 #### 3.2.1 Kepler Data
 
-- In this work (Shallue & Vanderburg, 2018), the training dataset is created with Kepler data by Kepler data pipeline methods (Jenkins et al. 2010). In other words, all of the data points are spaced with 29.4 minutes, also some preprocessing is done. For the labeled training dataset the Autovetter Planet Candidate Catalog is used (Catanzarite 2015). For the training process, as said earlier, “PC” is counted “1” and the rest “0”. In that training set, there are 12137 non-planet candidate samples and 3600 planet candidate samples. 80% of the data is used for training, 10% is used for testing and 10% is used for validating.
+- In this work (Shallue & Vanderburg, 2018), the training dataset is created with Kepler data by Kepler data pipeline methods (Jenkins et al. 2010). In other words, all of the data points are spaced with 29.4 minutes, also some preprocessing is done. For the labeled training dataset the Autovetter Planet Candidate Catalog is used (Catanzarite 2015). For the training process, as said earlier, “PC” is counted “1” and the rest “0” in vetting mode, in triage mode; "PC" and "EB" are counted as "1" and the rest are counted as "0". In that training set, there are 12137 non-planet candidate samples and 3600 planet candidate samples. 80% of the data is used for training, 10% is used for testing and 10% is used for validating.
 
 
 #### 3.2.2 TESS Data
 
-- For this work, the pipeline is so similar to the previous one, they followed some set of rules in order to do labeling (Yu et al. 2019). And, again “PC” is counted “1” and the rest “0”. In that training set, 492 planet candidate and 15959 non-planet candidate data points exist. Again similarly, 80% of the data is used for training, 10% is used for testing and 10% is used for validating.
+- For this work, the pipeline is so similar to the previous one, they followed some set of rules in order to do labeling (Yu et al. 2019). And, again “PC” is counted “1” and the rest “0” in vetting mode, in triage mode, again, "PC" and "EB" are counted as "1" and the rest are counted as "0".  In that training set, 492 planet candidate and 15959 non-planet candidate data points exist. Again similarly, 80% of the data is used for training, 10% is used for testing and 10% is used for validating.
 
 #### 3.2.3 K2 Photometry Data
 
@@ -176,23 +176,9 @@
 
 ### 5.1 Experiments (--- Draft ---)
 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/mod1.png">
+- First attempt on TRUBA (08/12/2021): Reproducing the previous work's training process (Yu et al. 2019)
 
-- *First architecture.*
-
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/mod2.png">
-
-- *Second architecture.*
-
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/mod3.png">
-
-- *Third architecture.*
-- 
-<img src="https://github.com/koraydarwin/earthml/blob/master/img/mod4.png">
-
-- *Fourth architecture.*
-
-- *In all of these models (created with Tensorflow layers), we got 97% accuracy, 0% recall.*
+- Second attempt on TRUBA (09(10?)/12/2021): With noise augmentation (Created from GAN architecture above)
 
 
 
