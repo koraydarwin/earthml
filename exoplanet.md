@@ -163,7 +163,7 @@
 
 ## 5 RESULTS
 
-- In the previous work that is done with TESS light curve data (Yu et al. 2019), they used Conv1D and simple Dense layers as a deep learning model, and they got 97.4% accuracy and 65% presicion in Triage mode, it classifies whether the data is an exoplanet or not, in Vetting mode, it classifies whether the data is an exoplanet or an eclipsing binaries or not, 97.8%. After this work, there is another work that uses gradient boosted tree (GBT) model via XGBoost package, which ensures us better results, 84% presicion. In these works, there is no data augmentation process, adding noise. In our approach, we firstly added two types of noises to TESS training dataset, noise that is created by GANs and noise which is the output of classical probability distribution functions. Secondly, we extracted the features from the noise augmented data. Finally, we tried various deep learning models that is produced by two packages which are Tensorflow and XGBoost. 
+- In the previous work that is done with TESS light curve data (Yu et al. 2019), they used Conv1D and simple Dense layers as a deep learning model, and they got 97.4% accuracy and 97% precision in Triage mode, it classifies whether the data is an exoplanet or not, in Vetting mode, it classifies whether the data is an exoplanet or an eclipsing binaries or not, with 97.6% accuracy and 64.2% precision. After this work, there is another work that uses gradient boosted tree (GBT) model via XGBoost package, which ensures us better results, 84% presicion. In these works, there is no data augmentation process, adding noise. In our approach, we firstly added two types of noises to TESS training dataset, noise that is created by GANs and noise which is the output of classical probability distribution functions. Secondly, we extracted the features from the noise augmented data. Finally, we tried various deep learning models that is produced by two packages which are Tensorflow and XGBoost. 
 
 <img src="https://github.com/koraydarwin/earthml/blob/master/EXOPLANET_RESULTS/Triage/acc_reproducing.png"> 
 
@@ -183,7 +183,11 @@
 
 <img src="https://github.com/koraydarwin/earthml/blob/master/img/original_yu.png">
 
+- *Architecture of Triage Mode Model.*
+
 <img src="https://github.com/koraydarwin/earthml/blob/master/img/vet_model.png">
+
+- *Architecture of Vetting Mode Model.*
 
 - *In these model, for the first input (i.e. global view) the number of the first One Dimensional Convolutional Neural Networks' filter size is 16 with 2 filter factor, 2 block size, 5 kernel size, 5 pooling size, 2 pool strides. For the second input (i.e. local view) the number of the first One Dimensional Convolutional Neural Networks' filter size is 16 with 2 filter factor, 2 block size, 5 kernel size, 7 pooling size, 2 pool strides, it is also valid for the third input (i.e. secondary view in Vetting Mode).*
 
