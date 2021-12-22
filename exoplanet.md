@@ -165,20 +165,90 @@
 
 - In the previous work that is done with TESS light curve data (Yu et al. 2019), they used Conv1D and simple Dense layers as a deep learning model, and they got 97.4% accuracy and 65% presicion in Triage mode, it classifies whether the data is an exoplanet or not, in Vetting mode, it classifies whether the data is an exoplanet or an eclipsing binaries or not, 97.8%. After this work, there is another work that uses gradient boosted tree (GBT) model via XGBoost package, which ensures us better results, 84% presicion. In these works, there is no data augmentation process, adding noise. In our approach, we firstly added two types of noises to TESS training dataset, noise that is created by GANs and noise which is the output of classical probability distribution functions. Secondly, we extracted the features from the noise augmented data. Finally, we tried various deep learning models that is produced by two packages which are Tensorflow and XGBoost. 
 
+<img src="https://github.com/koraydarwin/earthml/blob/master/EXOPLANET_RESULTS/Triage/acc_reproducing.png"> 
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/EXOPLANET_RESULTS/Triage/sc-tri.png"> 
+
+- *Results of the original Triage mode model.*
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/EXOPLANET_RESULTS/Vetting/acc_vet_reproducing.png">
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/EXOPLANET_RESULTS/Vetting/scv-vet.png"> 
+
+- *Results of the original Vetting mode model.*
+
 
 ### 5.1 Architecture of the Previous Works
 
 
 <img src="https://github.com/koraydarwin/earthml/blob/master/img/original_yu.png">
 
-- *In this model, for the first input (i.e. global view) the number of the first One Dimensional Convolutional Neural Networks' filter size is 16 with 2 filter factor, 2 block size, 5 kernel size, 5 pooling size, 2 pool strides. For the second input (i.e. local view) the number of the first One Dimensional Convolutional Neural Networks' filter size is 16 with 2 filter factor, 2 block size, 5 kernel size, 7 pooling size, 2 pool strides.*
+<img src="https://github.com/koraydarwin/earthml/blob/master/img/vet_model.png">
+
+- *In these model, for the first input (i.e. global view) the number of the first One Dimensional Convolutional Neural Networks' filter size is 16 with 2 filter factor, 2 block size, 5 kernel size, 5 pooling size, 2 pool strides. For the second input (i.e. local view) the number of the first One Dimensional Convolutional Neural Networks' filter size is 16 with 2 filter factor, 2 block size, 5 kernel size, 7 pooling size, 2 pool strides, it is also valid for the third input (i.e. secondary view in Vetting Mode).*
 
 
-### 5.1 Experiments (--- Draft ---)
+### 5.2 Experiments (--- Draft ---)
 
-- First attempt on TRUBA (08/12/2021): Reproducing the previous work's training process (Yu et al. 2019)
+#### 5.2.1 Triage Mode Experiments
 
-- Second attempt on TRUBA (09(10?)/12/2021): With noise augmentation (Created from GAN architecture above)
+- Experiment 1 (GAN Noise Augmented)
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/EXOPLANET_RESULTS/Triage/acc_exp1_gan.png"> 
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/EXOPLANET_RESULTS/Triage/sc1.png"> 
+
+- Experiment 2 (Gaussian Noise Augmented)
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/EXOPLANET_RESULTS/Triage/acc_exp2_gauss.png"> 
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/EXOPLANET_RESULTS/Triage/sc2.png"> 
+
+- Experiment 3 (Exponential Noise Augmented)
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/EXOPLANET_RESULTS/Triage/acc_exp3_exp.png"> 
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/EXOPLANET_RESULTS/Triage/sc3.png"> 
+
+- Experiment 4 (With Synthetic Data, 2000 More Exoplanets)
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/EXOPLANET_RESULTS/Triage/acc_tri_syn.png"> 
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/EXOPLANET_RESULTS/Triage/sc4.png"> 
+
+
+
+#### 5.2.2 Vetting Mode Experiments
+
+- Experiment 1 (GAN Noise Augmented)
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/EXOPLANET_RESULTS/Vetting/acc_vet_exp1_gan.png"> 
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/EXOPLANET_RESULTS/Vetting/scv1.png"> 
+
+- Experiment 2 (Gaussian Noise Augmented)
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/EXOPLANET_RESULTS/Vetting/acc_vet_gauss.png"> 
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/EXOPLANET_RESULTS/Vetting/scv2.png"> 
+
+- Experiment 3 (Exponential Noise Augmented)
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/EXOPLANET_RESULTS/Vetting/acc_vet_exp.png"> 
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/EXOPLANET_RESULTS/Vetting/scv3.png"> 
+
+- Experiment 4 (With Synthetic Data, 2000 More Exoplanets)
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/EXOPLANET_RESULTS/Vetting/acc_vet_syn.png"> 
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/EXOPLANET_RESULTS/Vetting/scv4.png"> 
+
+- Experiment 5 (With Synthetic Data, 4000 More Exoplanets)
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/EXOPLANET_RESULTS/Vetting/acc_vet_syn_4k.png"> 
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/EXOPLANET_RESULTS/Vetting/scv5.png"> 
 
 
 
