@@ -220,6 +220,12 @@
 
 <img src="https://github.com/koraydarwin/earthml/blob/master/EXOPLANET_RESULTS/Triage/sc4.png"> 
 
+- Experiment 5 (With Synthetic Data, 4000 More Exoplanets)
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/EXOPLANET_RESULTS/Triage/acc_tri_syn_4k.png"> 
+
+<img src="https://github.com/koraydarwin/earthml/blob/master/EXOPLANET_RESULTS/Triage/sc5.png"> 
+
 
 
 #### 5.2.2 Vetting Mode Experiments
