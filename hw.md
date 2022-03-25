@@ -1,4 +1,6 @@
-**Question 1:**
+# PHYS302 Homework-1 
+
+## Question 1:
 
 $$ L = \frac{1}{2}[-A\dot{t}^2 + B\dot{r}^2 + r^2 \dot{θ}^2 + r^2sin^2(θ)\dot{ϕ}^2]$$
 
@@ -19,7 +21,7 @@ Plugging these values with $ \dot{r} = \frac{dr}{dλ}$ into our Lagrangian, whic
 
 $$ 0 = -\frac{1}{A} E^2 + \frac{1}{B} \bigg(\frac{dr}{dλ} \bigg)^2 + \frac{1}{r^3}L_z^2 $$
 
-**Question 2:**
+## Question 2:
 
 * In order to find $ \frac{\partial{P_r}}{\partial{λ}} $ we can take derivative of the Lagrangian with respect to r. From Euler-Lagrange equation:
 
@@ -37,7 +39,7 @@ so
 
 $$ \frac{dr}{dλ} = \frac{P_r}{B}. $$
 
-**Question 3:**
+## Question 3:
 
 $$ H = \frac{1}{2}[-e^{2Φ} P_t^2 \frac{P_u^{2} + P_v^{2}}{ a^{2} \left(\sin^{2}{\left(v \right)} + \sinh^{2}{\left(u \right)}\right)} + P_z^2] $$
 
@@ -77,7 +79,7 @@ If we add two results, we get $$ - \frac{2 P_u \left(P_u \sin{\left(2 v \right)}
 After simplifications we get $ 0 $. Therefore $ P_{const} $ is equation of motion.
 
 
-**Question 4:**
+## Question 4:
 
 We have such a Lagrangian 
 
@@ -141,7 +143,7 @@ $$ H(p, q) = \frac{1}{2} (P_x^2 - P_t^2 - 2xP_x P_t)$$
 
 as needed.
 
-**Question 5:**
+## Question 5:
 
 $$ L = \frac{1}{2} \bigg (\frac{-\dot t -2x \dot t \dot x + \dot x^2}{1 + x^2} \bigg )      $$
 
